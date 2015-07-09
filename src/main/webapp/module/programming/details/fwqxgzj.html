@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>服务器相关杂记</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<hr />
+		<h4>
+			<strong>一、Ubuntu Server Tomcat 安装及端口号修改</strong><br />
+			<p class="pull-right">
+				<small>测试时间：2015.07 测试环境：ubuntu server 14.04</small>
+			</p>
+		</h4>
+		<br />
+		<h5>
+			<strong>1、下载 Tomcat7</strong>
+		</h5>
+		到 tomcat 官网，下载 tomcat7，然后通过 ftp 上传到服务器；或者是记下 tomcat7 下载的链接，然后使用 wget
+		命令直接在服务器端下载，这两种办法都可以<br />
+		<h5>
+			<strong>2、修改端口为 80</strong>
+		</h5>
+		首先解压
+		<code>gzip</code>
+		压缩形式，然后解包
+		<code>tar</code>
+		格式，就会得到一个名为
+		<code>apache-tomcat-7.0.57</code>
+		的文件夹<br /> 使用命令
+		<code>vi apache-tomcat-7.0.57/conf/server.xml</code>
+		，找到如下图所示位置，将
+		<code>8080</code>
+		，改为
+		<code>80</code>
+		<br /> 然后启动 tomcat，在浏览器地址内输入 ip 地址并回车，就能看到 tomcat 的界面了<br /> <img
+			src="../imgs/fwqxgzj01.jpg" alt="fwqxgzj01.jpg" class="img-thumbnail"><br />
+		<br />
+		<blockquote>
+			<p>
+				<small>推荐使用 ftp 的上传到服务器，再从 ftp 下载的形式，如果使用 wget
+					命令，链接地址特别长，不容易记住，如果您没有 ftp 那就看看小猿写的 <a href="usftpfwqdj.html">ftp
+						配置</a>的文章吧
+				</small>
+			</p>
+			<p>
+				<small>解压缩命令就不说啦，这些小猿都在 <a href="ujdk17az.html">jdk安装</a>
+					的文章中说过了，如果不会，你可以参考一下哦
+				</small>
+			</p>
+			<p>
+				<small>要启动 tomcat，您的服务器中必须首先安装了 jdk 才行，启动的文件是 <code>bin/startup.sh</code></small>
+			</p>
+			<p>
+				<small>如果服务器安装时比较干净的话，是不会出现 80 端口号占用的情况的，如果出现端口号占用情况，可以使用 <code>kill</code>
+					命令杀死进程
+				</small>
+			</p>
+			<p>
+				<small>如果要让修改的 80 端口起作用的话，必须为 root 用户修改，不可使用其他用户</small>
+			</p>
+		</blockquote>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a href="#"> 无 </a>
+		<hr>
+		<h4>
+			<strong>二、Ubuntu Server 增加可使用管理员权限的用户</strong><br />
+			<p class="pull-right">
+				<small>测试时间：2015.06 测试环境：ubuntu server 14.04</small>
+			</p>
+		</h4>
+		<br />
+		<h5>
+			<strong>1、使用 adduser 命令增加用户</strong>
+		</h5>
+		<code>sudo adduser test</code>
+		<h5>
+			<strong>2、修改 sudoers 文件以使用户获得 root 权限</strong>
+		</h5>
+		使用
+		<code>vi</code>
+		编辑器修改
+		<code>/etc/sudoers</code>
+		，找到
+		<code>root ALL=(ALL:ALL) ALL</code>
+		这一行<br /> 在其下面添加
+		<code>test ALL=(ALL:ALL) ALL</code>
+		，注销，重新连接登录就可以使用 root 权限了<br /> <br />
+		<blockquote>
+			<p>
+				<small>执行 <code>sudo adduser test</code>
+					这条命令时，会让输入两次密码，其他全部“回车”就可以，最后 <code>y</code> 一下，就可以啦
+				</small>
+			</p>
+		</blockquote>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a href="#"> 无 </a>
+		<hr />
+		<h4>
+			<strong>三、项目的发布及访问</strong><br />
+			<p class="pull-right">
+				<small>测试时间：2015.06 测试环境：ubuntu server 14.04</small>
+			</p>
+		</h4>
+		<br />
+		<h5>
+			<strong>1、项目打包</strong>
+		</h5>
+		使用 maven 的命令
+		<code>mvn package</code>
+		，很容易就能够将 web 项目打包成 war 文件，然后通过 ftp 上传到服务器<br />
+		<h5>
+			<strong>2、项目发布</strong>
+		</h5>
+		首先，关闭 tomcat 服务器
+		<code>apache-tomcat-7.0.57/bin/shutdown.sh</code>
+		<br /> 其次，将 war 文件移动到
+		<code>apache-tomcat-7.0.57/webapps/</code>
+		目录下<br /> 最后，重启服务器
+		<code>apache-tomcat-7.0.57/bin/shutdown.sh</code>
+		<br /> 在浏览器输入
+		<code>http://111.111.111.111:8080/project/xxx.jsp</code>
+		，就可以访问了<br /> <br />
+		<blockquote>
+			<p>
+				<small>不会 maven 怎么办，eclipse 就提供了打包的功能哦</small>
+			</p>
+			<p>
+				<small>一定要先 <code>shutdown</code>然后移动文件夹，再 <code>startup</code></small>
+			</p>
+			<p>
+				<small>端口号如果设为 80，就不需要输入端口号了，如果您有自己的域名，通过申请域名网站的 DNS 解析映射到您的
+					ip 地址，就可以用域名访问了</small>
+			</p>
+		</blockquote>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a href="#"> 无 </a>
+		<hr />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

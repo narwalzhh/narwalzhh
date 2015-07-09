@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubuntu Server Ftp服务器搭建</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Ubuntu Server Ftp服务器搭建</h1>
+		<h2>
+			<small>测试时间：2015年6月 测试环境：Linux Ubuntu 14.04.1 64位</small>
+		</h2>
+		<hr />
+		<h5>
+			<strong>1、安装 ftp 服务器</strong>
+		</h5>
+		使用命令
+		<code>sudo apt-get update</code>
+		更新源，更新完成后使用命令
+		<code>sudo apt-get install vsftpd</code>
+		安装ftp服务器<br />
+		<blockquote>
+			<p>
+				<small>更新源是为了安装最新的软件</small>
+			</p>
+			<p>
+				<small>为什么使用 vsftp，因为人家出名呗</small>
+			</p>
+			<p>
+				<small>如果使用 root 用户登录，其实所有命令是不需要 <code>sudo</code> 的
+				</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>2、修改 vsftpd 的配置文件</strong>
+		</h5>
+		使用命令
+		<code>sudo vi /etc/vsftpd.conf</code>
+		对配置文件进行修改，需要修改如下几个地方：
+		<dl>
+			<dt># Allow anonymous FTP? (Disabled by default)</dt>
+			<dd><code>anonymous_enable=NO</code></dd>
+			<dt># Uncomment this to allow local users to log in.</dt>
+			<dd><code>local_enable=YES</code></dd>
+			<dt># Uncomment this to enable any form of FTP write command.</dt>
+			<dd><code>write_enable=YES</code></dd>
+			<dt># chroot_list_enable below.</dt>
+			<dd><code>chroot_local_user=YES</code></dd>
+			<dt># 增加固定的访问目录</dt>
+			<dd><code>local_root=/home/ftpzhh</code></dd>
+		</dl>
+		<p />
+		<blockquote>
+			<p>
+				<small>安装完成之后，其实可以直接用自己的账户和密码登录的，但是不建议这么做</small>
+			</p>
+			<p>
+				<small>有几个地方一开始注释是不存在的，所以就不用理它了</small>
+			</p>
+			<p>
+				<small>如果您 vi 不会用，估计您的基本功比小猿还差，哈哈</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>3、建立对应的文件夹并增加 ftp 用户</strong>
+		</h5>
+		进入
+		<code>/home</code>
+		目录下，使用命令
+		<code>sudo mkdir ftpzhh</code>
+		新建对应目录<br /> 接下来添加用户，使用命令
+		<code>sudo useradd -d /home/ftpzhh -M username</code>
+		<br /> 为用户设置密码，使用命令
+		<code>sudo passwd username</code>
+		，按照提示，输入自己的密码
+		<blockquote>
+			<p>
+				<small>username 您可以自己设置，取一个您比较喜欢又容易记住的名字就好</small>
+			</p>
+			<p>
+				<small>密码要输入两次</small>
+			</p>
+			<p>
+				<small>文件夹的名字您可以任意取，小猿的就叫 ftpzhh</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>4、修改文件夹权限，并建立存储数据的文件夹</strong>
+		</h5>
+		为了避免
+		<code>500 OOPS: vsftpd: refusing to run with writable root
+			inside chroot()</code>
+		，做以下工作：<br />
+		<dl>
+			<dt>
+				# 取消所有用户对
+				<code>/home/ftpzhh</code>
+				的写权限
+			</dt>
+			<dd>
+				<code>sudo chmod a-w /home/ftpzhh</code>
+			</dd>
+			<dt># 建立存储数据文件夹</dt>
+			<dd>
+				<code>sudo mkdir /home/ftpzhh/data</code>
+			</dd>
+			<dt>
+				# 修改
+				<code>data</code>
+				文件夹的权限
+			</dt>
+			<dd>
+				<code>sudo chmod 777 /home/ftpzhh/data</code>
+			</dd>
+		</dl>
+		<blockquote>
+			<p>
+				<small>其实我也不知道为什么要这样做，因为不这样做会出错，哈哈</small>
+			</p>
+			<p>
+				<small>您存储数据的文件夹不一定要命名为 data 哦</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>5、修改 <code>pam.d/vsftpd</code> 文件
+			</strong>
+		</h5>
+		为了避免使用
+		<code>useradd</code>
+		增加的帐号登陆时出现
+		<code>530 login incorrect</code>
+		，修改
+		<code>pam.d/vsftpd</code>
+		文件<br /> 使用命令
+		<code>sudo vi /etc/pam.d/vsftpd</code>
+		编辑文件<br /> 注释掉
+		<code>#auth required pam_shells.so</code>
+		<blockquote>
+			<p>
+				<small>不要问为什么，额不知道</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>6、重启vsftpd，就可以使用ftp了</strong>
+		</h5>
+		使用命令
+		<code>sudo service vsftpd restart</code>
+		重启vsftpd<br />
+		<blockquote>
+			<p>
+				<small>随便找一个浏览器，在地址栏输入 <code>ftp://111.111.111.111</code>，键入回车，输入用户名和密码就可以看到
+					<code>data</code> 文件夹
+				</small>
+			</p>
+			<p>
+				<small>您的 ip 地址一定不是 <code>111.111.111.111</code>，这是我举的例子
+				</small>
+			</p>
+			<p>
+				<small>建议使用 ubuntu，打开终端，输入 <code>ftp 111.111.111.111</code>，就可以连接上
+					ftp 了
+				</small>
+			</p>
+			<p>
+				<small><code>get xxxx</code>获取文件，<code>put xxxx</code>上传文件，<code>delete
+						xxxx</code>删除文件</small>
+			</p>
+			<p>
+				<small>对文件的一切操作都是在 <code>data</code> 文件夹下
+				</small>
+			</p>
+		</blockquote>
+
+		<hr>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a href="http://www.cnblogs.com/CSGrandeur/p/3754126.html"
+			target="_blank"> http://www.cnblogs.com/CSGrandeur/p/3754126.html
+		</a> <br />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

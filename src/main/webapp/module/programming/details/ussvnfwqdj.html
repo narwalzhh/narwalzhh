@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubuntu Server SVN服务器搭建</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Ubuntu Server SVN服务器搭建</h1>
+		<h2>
+			<small>测试时间：2015年6月 测试环境：Linux Ubuntu 14.04.1 64位</small>
+		</h2>
+		<hr />
+		<h5>
+			<strong>1、安装 subversion</strong>
+		</h5>
+		使用命令
+		<code>sudo apt-get update</code>
+		更新源<br /> 更新完成后使用命令
+		<code>sudo apt-get install subversion</code>
+		安装 subversion<br />
+
+		<h5>
+			<strong>2、创建 svn 管理用户</strong>
+		</h5>
+		使用命令
+		<code>sudo adduser svnzhh</code>
+		增加用户，同时创建了和用户名相同名称的用户组：
+		<p />
+		<blockquote>
+			<p>
+				<small>这里主要是为了将工程单独放在一个文件夹下，管理起来比较方便</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>3、创建项目的目录及文件仓库 repos</strong>
+		</h5>
+		进入
+		<code>/home/svnzhh/</code>
+		目录下，使用命令
+		<code>sudo mkdir test-core</code>
+		新建项目名称<br /> 使用命令
+		<code>sudo svnadmin create /home/svnzhh/test-core</code>
+		创建仓库
+		<p />
+		<blockquote>
+			<p>
+				<small>小猿认为写“全路径”比较不容易出错</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>4、修改配置文件，增加项目用户</strong>
+		</h5>
+		进入
+		<code>/test-core/conf</code>
+		目录下，需修改以下几个文件：
+		<dl>
+			<dt>
+				# 使用命令
+				<code>sudo vi svnserve.cnf</code>
+				编辑文件，取消其注释
+			</dt>
+			<dd>
+				<code>anon-access = read</code>
+				匿名用户可读
+			</dd>
+			<dd>
+				<code>auth-access = write</code>
+				授权用户可写
+			</dd>
+			<dd>
+				<code>password-db = passwd</code>
+				密码在 passwd 文件中定义
+			</dd>
+			<dt>
+				# 使用命令
+				<code>sudo vi passwd</code>
+				在文件末尾增加项目用户
+			</dt>
+			<dd>
+				<code>narwal = narwal</code>
+				用户名 = 密码
+			</dd>
+		</dl>
+		<blockquote>
+			<p>
+				<small>注意修改的时候，他们前面千万不能有空格</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>5、用 eclipse 初始导入项目 </strong>
+		</h5>
+		在名称为
+		<code>test-core</code>
+		的工程上
+		<code>右键 >> Team >> Share Project >> SVN >> Create a new
+			repository location >> </code>
+		输入
+		<code>svn://111.111.111.111/test-core</code>
+		应该就可以连接上了<br /> 然后就是初始提交
+		<code>Commit</code>
+		项目了
+		<p />
+		<blockquote>
+			<p>
+				<small>这里小猿说的是“应该可以”，因为小猿用自己 ubuntu 上的 eclipse kepler
+					总是出问题，换到 windows7 上就没什么问题，至今也没搞懂，也懒得整了</small>
+			</p>
+			<p>
+				<small>如果您也使用的是 kepler 版本，它本身是不带 SVN 插件的，所以如果要实现这一步，您得先安装
+					SVN 插件，安装插件太简单了，您可以搜索一下关键字，如果您懒得搜索，看到小猿头像下的邮箱了吗？您可以给小猿发邮件，小猿给您解答</small>
+			</p>
+			<p>
+				<small>小猿实验时遇到挺多麻烦，所以就比较倾向于使用 Git 了，鼓励大家使用 Git，虽然小猿我也是新手，嘿嘿</small>
+			</p>
+			<p>
+				<small>说到 Git，就不得不提廖大的 Git 新手教程，写的相当好哦，附上 <a
+					href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000"
+					target="_blank">链接</a>，支持廖大
+				</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>6、项目检出、提交和更新</strong>
+		</h5>
+		检出：在 SVN Repositories 视图中
+		<code>右键 >> New >> Repository Location</code>
+		填入
+		<code>svn://111.111.111.111 >> finish</code>
+		点开新出现的路径，选择
+		<code>test-core</code>
+		，
+		<code>Checkout</code>
+		就可以了 <br /> 提交、更新： 在
+		<code>test-core</code>
+		工程上
+		<code>右键 >> Team </code>
+		，提交是
+		<code>Commit</code>
+		，更新是
+		<code>Update</code>
+		<p />
+		<blockquote>
+			<p>
+				<small>这里就没有什么了，如果想应用的熟练，那就多尝试尝试吧</small>
+			</p>
+		</blockquote>
+
+		<hr>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a
+			href="http://blog.163.com/yang_jianli/blog/static/161990006201210248948225/"
+			target="_blank">
+			http://blog.163.com/yang_jianli/blog/static/161990006201210248948225/
+		</a> <br />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

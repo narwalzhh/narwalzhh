@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubuntu Mysql数据库安装及字符集修改</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript" src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Ubuntu Mysql数据库安装及字符集修改</h1>
+		<h2>
+			<small>测试时间：2015年6月 测试环境：Linux Ubuntu 14.04.1 64位</small>
+		</h2>
+		<hr />
+		<h5>
+			<strong>1、安装 Mysql 数据库</strong>
+		</h5>
+		首先使用命令 <code>sudo apt-get update</code> 更新源<br/>
+		更新完成后使用命令 <code>sudo apt-get install mysql-server mysql-client</code> 安装 Mysql 数据库<br /> 
+		<blockquote>
+			<p>
+				<small>如果直接执行后面这条命令，可能会无法下载，这时候就要更新一下源了</small>
+			</p>
+		</blockquote>
+		
+		<h5>
+			<strong>2、安装过程中</strong>
+		</h5>
+		安装过程中会有选择和输入 root 用户密码，选择使用的是 <kbd>tab</kbd> 键，而密码自己输入一个自己满意的就可以了
+		<p/>
+		
+		<h5>
+			<strong>3、登录 Mysql 数据库</strong>
+		</h5>
+		使用命令 <code>mysql -u root -p</code> 并“回车”，输入自己设置的密码进入 Mysql 数据库<br/>
+		<img src="../imgs/umysqlazjzfjxg01.jpg" alt="access to mysql" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small><code>-p</code>后面可以直接跟密码的</small>
+			</p>
+		</blockquote>
+		
+		<h5>
+			<strong>4、修改字符集编码为 utf-8 并取消大小写敏感</strong>
+		</h5>
+		使用命令 <code>sudo vi /etc/mysql/my.conf</code>，修改配置文件，需添加如下配置：<br/>
+		<dl>
+			<dt>找到 <code>[client]</code> 添加</dt>
+			<dd><code>default-character-set=utf8</code></dd>
+			<dt>找到 <code>[mysqld]</code> 添加</dt>
+			<dd><code>character-set-server=utf8</code><br/></dd>
+			<dd><code>init_connect='SET NAMES utf8'</code><br></dd>
+			<dd><code>lower_case_table_names=1</code></dd>
+			
+		</dl>
+		<blockquote>
+			<p>
+				<small>和 <code>utf8</code> 相关的时修改字符集，剩下的那一条是取消数据库对大小写敏感的</small>
+			</p>
+		</blockquote>
+		
+		<h5>
+			<strong>5、重启 Mysql 数据库验证字符集是否修改完成</strong>
+		</h5>
+		使用命令 <code>sudo service mysql restart</code> 重启数据库，进入数据库<br/>
+		执行命令 <code>show variables like "%char%";</code> 如观察到下图，证明已修改成功<br/>
+		<img src="../imgs/umysqlazjzfjxg02.jpg" alt="variables" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>至此，您已成功设置了 Mysql 数据库，赶快体验一下吧</small>
+			</p>
+		</blockquote>
+		
+		<hr>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a
+			href="http://www.2cto.com/database/201401/273423.html"
+			target="_blank">
+			http://www.2cto.com/database/201401/273423.html </a> <br />
+		<blockquote><small>如果此篇文章打不开，您大可随便搜一下关键字，一找一大堆</small></blockquote> 
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

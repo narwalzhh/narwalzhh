@@ -1,0 +1,58 @@
+[
+	{
+		"id": 101,
+		"musicname": "假如爱有天意",
+		"pinyin": "jrayty",
+		"singer": "李健",
+		"hrefurl": "../../audios/jrayty.mp3"
+	},
+	{
+		"id": 102,
+		"musicname": "贝加尔湖畔",
+		"pinyin": "bjehp",
+		"singer": "李健",
+		"hrefurl": "../../audios/bjehp.mp3"
+	},
+	{
+		"id": 103,
+		"musicname": "Blank Sapce",
+		"pinyin": "blankspace",
+		"singer": "Taylor Swift",
+		"hrefurl": "../../audios/blankspace.mp3"
+	},
+	{
+		"id": 104,
+		"musicname": "Immortals",
+		"pinyin": "immortals",
+		"singer": "Fall Out Boys",
+		"hrefurl": "../../audios/immortals.mp3"
+	},
+	{
+		"id": 105,
+		"musicname": "Fade",
+		"pinyin": "fade",
+		"singer": "Alan Walker",
+		"hrefurl": "../../audios/fade.mp3"
+	},
+	{
+		"id": 106,
+		"musicname": "See you again",
+		"pinyin": "seeyouagain",
+		"singer": "Wiz Khalifa、Charlie Puth",
+		"hrefurl": "../../audios/seeyouagain.mp3"
+	},
+	{
+		"id": 107,
+		"musicname": "可惜没有如果",
+		"pinyin": "kxmyrg",
+		"singer": "林俊杰",
+		"hrefurl": "../../audios/kxmyrg.mp3"
+	},
+	{
+		"id": 108,
+		"musicname": "Time to say goodbye",
+		"pinyin": "timetosaygoodbye",
+		"singer": "Sarah Brightman",
+		"hrefurl": "../../audios/timetosaygoodbye.mp3"
+	}
+]

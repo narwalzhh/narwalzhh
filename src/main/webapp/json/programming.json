@@ -1,0 +1,48 @@
+[
+	{
+		"belongto": "fwqxg",
+		"blogname": "Ubuntu Server数据盘挂载",
+		"hrefurl": "details/usfwqsjpgz.html"
+	},
+	{
+		"belongto": "fwqxg",
+		"blogname": "Ubuntu Server Ftp服务器搭建",
+		"hrefurl": "details/usftpfwqdj.html"
+	},
+	{
+		"belongto": "fwqxg",
+		"blogname": "Ubuntu Mysql数据库安装及字符集修改",
+		"hrefurl": "details/umysqlazjzfjxg.html"
+	},
+	{
+		"belongto": "fwqxg",
+		"blogname": "Ubuntu Server SVN服务器搭建",
+		"hrefurl": "details/ussvnfwqdj.html"
+	},
+	{	
+		"belongto": "fwqxg",
+		"blogname": "Ubuntu JDK1.7安装",
+		"hrefurl": "details/ujdk17az.html"
+	},
+	{	
+		"belongto": "fwqxg",
+		"blogname": "服务器相关杂记",
+		"hrefurl": "details/fwqxgzj.html"
+	},
+	{	
+		"belongto": "fwqxg",
+		"blogname": "服务器相关杂记*02",
+		"hrefurl": "details/fwqxgzj02.html"
+	},
+	{	
+		"belongto": "bcxg",
+		"blogname": "编程相关杂记",
+		"hrefurl": "details/bcxgzj.html"
+	},
+	{	
+		"belongto": "qt",
+		"blogname": "杂记",
+		"hrefurl": "details/qtzj.html"
+	}
+	
+]

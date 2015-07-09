@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ubuntu server数据盘挂载</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript" src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Ubuntu Server数据盘挂载</h1>
+		<h2>
+			<small>测试时间：2015年6月 测试环境：Linux Ubuntu 14.04.1 64位</small>
+		</h2>
+		<hr />
+		<h5>
+			<strong>1、查看未分区数据盘</strong>
+		</h5>
+		使用命令
+		<code>fdisk -l</code>
+		命令查看没有挂载上的数据盘<br /> <img src="../imgs/usfwqsjpgz01.jpg" alt="step 1"
+			class="img-thumbnail">
+		<p />
+		<img src="../imgs/usfwqsjpgz02.jpg" alt="step 2" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>这篇文章是小猿后来整理的，第一次分区是第一张图的情况，可以看到提示</small>
+			</p>
+			<p>
+				<small>未分区的数据盘不一定叫做 <code>xvdb</code>，小猿的就不是，具体名字忘记了，这里借用一下这个名字，但一定是
+					<code>/dev</code> 目录下的
+				</small>
+			</p>
+			<p>
+				<small>小猿是这么判断的，一是磁盘容量比较大，二是没有“第几块”分区，就是 <code>/dev/xvdb</code>
+					后面没有数字，如果您两者都没有，可能就不需要挂载了，要么就找管理员询问一下
+				</small>
+			</p>
+		</blockquote>
+		<h5>
+			<strong>2、对数据盘进行分区</strong>
+		</h5>
+		使用命令
+		<code>fdisk /dev/xvdb</code>
+		对数据盘进行分区，点击“回车”向下执行
+		<p />
+		此时，终端会等待您的输入按照顺序，依次
+		<code>n</code>
+		，
+		<code>p</code>
+		，
+		<code>1</code>
+		，
+		<code>两次回车</code>
+		，
+		<code>wq</code>
+		，分区过程开始，请等待其结束 <br />
+		<img src="../imgs/usfwqsjpgz03.jpg" alt="step 1" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>这里的几个命令都是“死”的，记住就可以啦</small>
+			</p>
+		</blockquote>
+		<h5>
+			<strong>3、检查新的分区</strong>
+		</h5>
+		使用命令
+		<code>fdisk -l</code>
+		查看磁盘分区信息，可以看到新的分区
+		<code>xvdb1</code>
+		已经建立完成 <br />
+		<img src="../imgs/usfwqsjpgz04.jpg" alt="step 1" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>可以观察到，<code>/dev/xvdb</code> 后面多了一个 <code>1</code>，是
+					1, 2, 3 的 1 哦
+				</small>
+			</p>
+		</blockquote>
+		<h5>
+			<strong>4、格式化新的分区</strong>
+		</h5>
+		以
+		<code>ext3</code>
+		为例，使用命令
+		<code>mkfs.ext3 /dev/xvdb1</code>
+		重新格式化分区，点击“回车”，等待过程结束 <br />
+		<img src="../imgs/usfwqsjpgz05.jpg" alt="step 1" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>读者可以使用 <code>ext4</code> 文件格式尝试一下，小猿使用的是 <code>ext3</code></small>
+			</p>
+		</blockquote>
+		<h5>
+			<strong>5、写入新的分区信息</strong>
+		</h5>
+		使用命令
+		<code>echo '/dev/xvdb1 /home ext3 barrier=0 0 0' >> /etc/fstab</code>
+		写入新的分区信息
+		<p />
+		使用命令
+		<code>cat /etc/fstab</code>
+		观察到下图信息就说明写入成功 <br />
+		<img src="../imgs/usfwqsjpgz06.jpg" alt="step 1" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>ubuntu 14.04一定要用 <code>echo '/dev/xvdb1 /home
+						ext3 barrier=0 0 0' >> /etc/fstab</code> 这个命令，否则会出错的
+				</small>
+			</p>
+			<p>
+				<small>图片中的 <code>/mnt</code> 是挂载路径，小猿就改成了 <code>/home</code>，读者可自行决定
+				</small>
+			</p>
+		</blockquote>
+		<h5>
+			<strong>6、最终挂载新分区</strong>
+		</h5>
+		使用命令
+		<code>mount -a</code>
+		挂载分区，用命令
+		<code>df -h</code>
+		查看出现下图信息就说明挂载成功，重启也不用重新挂载 <br />
+		<img src="../imgs/usfwqsjpgz07.jpg" alt="step 1" class="img-thumbnail"><p>
+		<blockquote>
+			<p>
+				<small>至此就挂载完成，如果读者中间出错，SSH连接不上拉，不要慌，进入管理面板，重新安装系统，重新来过，多试一试就可以了，小猿就尝试的3遍呢</small>
+			</p>
+		</blockquote>
+		<hr>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a
+			href="http://help.aliyun.com/knowledge_detail.htm?knowledgeId=5974154"
+			target="_blank">
+			http://help.aliyun.com/knowledge_detail.htm?knowledgeId=5974154 </a> <br />
+		<a
+			href="http://www.vps2ez.com/linux-tutorials/linux-vps-mount-ext.html"
+			target="_blank">
+			http://www.vps2ez.com/linux-tutorials/linux-vps-mount-ext.html </a>
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

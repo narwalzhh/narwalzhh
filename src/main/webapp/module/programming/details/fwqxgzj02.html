@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>其他杂记</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<hr />
+		<h4>
+			<strong>一、Tomcat 配置只输入域名就能访问项目及修改小猫图标
+			</strong><br />
+			<p class="pull-right">
+				<small>测试时间：2015.07 测试环境：ubuntu server 14.04</small>
+			</p>
+		</h4>
+		<br /> 
+		<h5>
+			<strong>1、配置只输入域名就能访问项目</strong>
+		</h5>
+		使用 <code>ssh</code> 连接到服务器，先将 tomcat 服务器 <code>shutdown</code>，然后进入 tomcat 的 <code>conf/</code> 目录下，使用
+		<code>vi</code> 修改 <code>server.xml</code> 文件，在下图位置添加如下配置：<br/>
+		<br /> <img src="../imgs/fwqxgzj02.png" alt="fwqxgzj02.png" class="img-thumbnail"><br />
+		<br /> 重启服务器，测试一下效果吧<br />
+		<blockquote>
+			<small>
+				网上说直接可以将工程放到 <code>webapps/ROOT/</code> 目录下，并删除其他的与工程无关的所有的文件，小猿尝试了一下，没有成功，也不喜欢这种粗暴的方法
+			</small>
+			<small>
+				如果想要配置这一步，必须先将您的端口号改为 <code>80</code>，具体配置可以看小猿的<a href="fwqxgzj.html">这篇文章</a>
+			</small>
+			<small>
+				进行配置请使用 <code>root</code> 帐号
+			</small>
+		</blockquote>
+		<br/>
+		<h5>
+			<strong>2、修改小猫图标</strong>
+		</h5>
+		在增加完标签以后，可以顺便把小猫的图标给改了，具体做法如下：<br/>
+		首先准备一张格式为 <code>ico</code> 分辨率为 <code>16*16</code>的心仪的图标，命名为 <code>favicon.ico</code>，使用 ftp 上传的服务器<br/>
+		其次，进入 tomcat <code>webapps/ROOT</code> 目录下，将原来的 <code>favicon.ico</code> 删除，再从 ftp <code>get</code> 到当前目录，重启 tomcat，浏览器清空缓存
+		试着访问一下，就会看见新的图标了
+		<br/>
+		<blockquote>
+			<small>
+				其他的设置方法也可以参考下面这条连接里的，这里就不说了，有兴趣的可以看一下
+			</small>
+		</blockquote>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a href="http://blog.csdn.net/lifxue/article/details/7106112"
+			target="_blank">http://blog.csdn.net/lifxue/article/details/7106112
+		</a>
+		<hr />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

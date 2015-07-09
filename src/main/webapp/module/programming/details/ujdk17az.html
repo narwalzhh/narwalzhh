@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubuntu JDK1.7安装</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Ubuntu JDK1.7安装</h1>
+		<h2>
+			<small>测试时间：2015年6月 测试环境：Linux Ubuntu 14.04.1 64位</small>
+		</h2>
+		<hr />
+		<h5>
+			<strong>1、官网下载 JDK 安装包</strong>
+		</h5>
+		这一步没什么好说的，请大家务必到官网去下载，养成个好习惯
+		<blockquote>
+			<p>
+				<small>最新的 JDK 都已经出了 1.8 了</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>2、解压文件并移动到目标路径</strong>
+		</h5>
+		使用命令
+		<code>sudo /usr/local/jdk</code>
+		在
+		<code>local/</code>
+		目录下新建名为
+		<code>jdk</code>
+		的文件夹<br /> 找到下载的 JDK 的安装包，使用命令
+		<code>gzip -d jdk-7u75-linux-x64.tar.gz</code>
+		解压 gzip 压缩形式<br /> 解压完成后，会生成
+		<code>jdk-7u75-linux-x64.tar</code>
+		文件<br /> 使用命令
+		<code>tar -xvf jdk-7u75-linux-x64.tar</code>
+		解包出现一个名为
+		<code>jdk1.7.0_75</code>
+		的文件夹<br /> 使用命令
+		<code>sudo mv jdk1.7.0_75 /usr/local/jdk/</code>
+		将文件夹移动到新建的
+		<code>jdk/</code>
+		目录下
+		<p />
+		<blockquote>
+			<p>
+				<small>用户自己安装的东西放到 <code>/usr/local</code> 下是个好习惯
+				</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>3、增加环境变量</strong>
+		</h5>
+		使用命令
+		<code>sudo vi /etc/profile</code>
+		编辑
+		<code>profile</code>
+		文件<br /> 行至文件末尾 增加如下内容：<br />
+		<dl>
+			<dt># java_home 路径</dt>
+			<dd>
+				<code>export JAVA_HOME=/usr/local/jdk/jdk1.7.0_75</code>
+			</dd>
+			<dt># jre_home 路径</dt>
+			<dd>
+				<code>export JRE_HOME=${JAVA_HOME}/jre</code>
+			</dd>
+			<dt># path</dt>
+			<dd>
+				<code>export PATH=$PATH:${JAVA_HOME}/bin</code>
+			</dd>
+			<dt># classpath</dt>
+			<dd>
+				<code>export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib</code>
+			</dd>
+		</dl>
+		<blockquote>
+			<p>
+				<small>有人将这些内容增加到 <code>~/.bashrc</code> 中，个人比较倾向于放到 <code>/etc/profile</code>
+					中
+				</small>
+			</p>
+			<p>
+				<small>Linux 严格区分大小写</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>4、配置默认的 JDK 版本</strong>
+		</h5>
+		使用命令
+		<code>sudo update-alternatives --install /usr/bin/java java
+			/usr/local/jdk/jdk1.7.0_75/bin/java 300</code>
+		<br /> 使用命令
+		<code>sudo update-alternatives --install /usr/bin/javac javac
+			/usr/local/jdk/jdk1.7.0_75/bin/javac 300</code>
+		<br /> 然后执行命令
+		<code>sudo update-alternatives --config java</code>
+		<blockquote>
+			<p>
+				<small>若系统中没有 JDK，则会提示 <code>here is only one
+						alternative in link group java (providing /usr/bin/java):
+						/usr/local/jdk/jdk1.7.0_75/bin/java</code></small>
+			</p>
+			<p>
+				<small>若系统中原有 JDK 如：openjdk 等，则需要输入数字选择刚安装的版本</small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>5、确认安装成功</strong>
+		</h5>
+		使用命令
+		<code>java -version</code>
+		如果出现下图信息，则表明安装成功<br /> <img src="../imgs/ujdk17az01.jpg"
+			alt="jdkdetails" class="img-thumbnail">
+		<p>
+		<blockquote>
+			<p>
+				<small>出现这个画面，说明您已经安装成功了，写个经典的"hello world！"测试一下吧</small>
+			</p>
+		</blockquote>
+
+		<hr>
+		<h4>
+			<small>参考文章：</small>
+		</h4>
+		<a href="http://www.cnblogs.com/plinx/archive/2013/06/01/3113106.html"
+			target="_blank">
+			http://www.cnblogs.com/plinx/archive/2013/06/01/3113106.html </a> <br />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
