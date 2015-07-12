@@ -40,7 +40,7 @@ body {
 				toBeAppended += '</cite></td><td>';
 				toBeAppended += element["singer"];
 				toBeAppended += '</td><td>';
-				toBeAppended += '<audio src="'+ element["hrefurl"] +'" controls="small"></audio></td></tr>';
+				toBeAppended += '<audio src="'+ element["hrefurl"] +'" preload="preload" controls="controls"></audio></td></tr>';
 			});
 			musicContent.html(toBeAppended);
 		});

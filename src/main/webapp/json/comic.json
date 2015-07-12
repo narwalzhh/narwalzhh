@@ -1,7 +1,15 @@
 [
 	{
 		"belongto": "hyrz",
-		"id": 101,
+		"id": 103,
+		"comicname": "639集：爸爸的青春",
+		"type": "动画",
+		"description": "不知道凯爷说出“夕象”的时候，你有没有震惊",
+		"hrefurl": "http://www.tudou.com/albumplay/Lqfme5hSolM/9d4A_ziA5S4.html?tpa=dW5pb25faWQ9MTAzNjY3XzEwMDAwMV8wMV8wMQ"
+	},
+	{
+		"belongto": "hyrz",
+		"id": 104,
 		"comicname": "710话：双瞳中所见到的",
 		"type": "漫画",
 		"description": "萨拉娜真相揭晓，太子认真起来还是辣么666",
@@ -9,7 +17,7 @@
 	},
 	{
 		"belongto": "hyrz",
-		"id": 102,
+		"id": 105,
 		"comicname": "638集：苍蓝野兽vs六道斑",
 		"type": "动画",
 		"description": "木叶从此再无苍蓝野兽，凯爷虐斑指日可待",
@@ -17,7 +25,7 @@
 	},
 	{
 		"belongto": "other",
-		"id": 103,
+		"id": 106,
 		"comicname": "小黄人2015",
 		"type": "动画电影",
 		"description": "萌萌嗒的小黄人来袭，让我们一起highq起来吧",
@@ -25,7 +33,7 @@
 	},
 	{
 		"belongto": "other",
-		"id": 104,
+		"id": 107,
 		"comicname": "疯狂外星人",
 		"type": "动画电影",
 		"description": "Sheldon: My hands are in the air like I just do not care",

@@ -82,17 +82,17 @@ body {
 	    $("#music").popover({
 	    	trigger: "hover",
 	    	container: "body",
-	    	content: "李健的这两首歌没有什么语言是我可以描述的，小猿只能说：绝了！"
+	    	content: "当内心躁动不已，当终日奔波，身心俱疲时，不如静静地躺下，用心聆听，或许，心就不是那么累了！"
 	    });
 	    $("#video").popover({
 	    	trigger: "hover",
 	    	placement: "left",
-	    	content: "狂野到淋漓尽致，虽然看完后小猿对其中的很多地方有不解，但是不得不说，这是小猿看过的最棒的公路电影，帅爆了！"
+	    	content: "森叔不是来打架耍帅的，他是来负责逗逼的，大侦探福尔摩斯中的华生也有出演哦，，it‘s always nice to meet you, Mr. Watson!"
 	    });
 	    $("#comic").popover({
 	    	trigger: "hover",
 	    	placement: "left",
-	    	content: "萨拉娜果然是小樱亲生，这也洗白了佐二少，但是短短10话，火影漫画又要和漫迷门告别一段时间了，让我们期待8月7号的继续更新吧！"
+	    	content: "自我约束，誓死也要守护自己最重要的东西，当凯开启八门遁甲最后一门死门的时候，除了激动和震惊之外，小猿还知道了：青春至死不息！"
 	    });
 	});
 </script>
@@ -217,7 +217,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>音乐</small></h2>
 				<p>
-					<a id="music"><cite>假如爱有天意</cite>、<cite>贝加尔湖畔</cite>，李健的这两首歌没有什么语言...</a>
+					<a id="music"><cite>尘缘</cite> 当内心躁动不已，当终日奔波，身心俱疲时，不如静静地...</a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/music/main.jsp" role="button">详细&raquo;</a>
@@ -228,7 +228,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>视频</small></h2>
 				<p>
-					<a id="video"><cite>疯狂的Max：狂暴之路</cite> 狂野到淋漓尽致，虽然看完后小猿对其中的很多地方有...</a>
+					<a id="video"><cite>女间谍</cite> 广受大家喜爱的光头肌肉男郭达斯坦森又来了，但是，请注意...</a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/video/main.jsp" role="button">详细&raquo;</a>
@@ -239,7 +239,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>动漫</small></h2>
 				<p>
-					<a id="comic"><cite>火影忍者710话：双瞳中所见到的</cite>萨拉娜果然是小樱亲生，这也洗白了佐二少...</a>
+					<a id="comic"><cite>火影忍者639集：爸爸的青春</cite> 自我约束，誓死也要守护自己...</a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/comic/main.jsp" role="button">详细&raquo;</a>
