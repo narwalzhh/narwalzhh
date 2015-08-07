@@ -78,14 +78,24 @@ body {
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="<%=contextPath%>/module/programming/main.jsp">编程</a></li>
-				<li class="active"><a
-					href="<%=contextPath%>/module/reading/main.jsp">读书</a></li>
-				<li><a href="<%=contextPath%>/module/music/main.jsp">音乐</a></li>
-				<li><a href="<%=contextPath%>/module/video/main.jsp">视频</a></li>
-				<li><a href="<%=contextPath%>/module/comic/main.jsp">动漫</a></li>
+				<li><a href="#">留言墙</a></li>
+				<li><a href="#">小玩意</a></li>
+				<li class="dropdown active"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">其他 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="<%=contextPath%>/module/reading/main.jsp">读书</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="<%=contextPath%>/module/music/main.jsp">音乐</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="<%=contextPath%>/module/video/main.jsp">视频</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="<%=contextPath%>/module/comic/main.jsp">动漫</a></li>
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="tooltip" data-placement="bottom"
+				<li><a href="<%=contextPath %>/login.jsp" data-toggle="tooltip" data-placement="bottom"
 					title=""> <span class="glyphicon glyphicon glyphicon-log-in"
 						aria-hidden="true"></span>
 				</a></li>

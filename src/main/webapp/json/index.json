@@ -35,26 +35,27 @@
 	},
 	{
 		"id": 108,
-		"name": "其他"
+		"name": "#",
+		"hrefurl": "#"
 	},
 	{
 		"id": 109,
-		"name": "<cite>尘缘</cite> -- 李健",
-		"hrefurl": "module/music/main.jsp"
+		"name": "#",
+		"hrefurl": "#"
 	},
 	{
 		"id": 110,
-		"name": "<cite>女间谍(Spy)</cite></a>",
-		"hrefurl": "module/video/main.jsp"
+		"name": "#",
+		"hrefurl": "#"
 	},
 	{
 		"id": 111,
-		"name": "<cite>火影忍者639集：爸爸的青春</cite>",
-		"hrefurl": "module/comic/main.jsp"
+		"name": "#",
+		"hrefurl": "#"
 	},
 	{
 		"id": 112,
-		"name": "<cite>《瓦尔登湖》</cite>-- 亨利·戴维·梭罗",
-		"hrefurl": "module/reading/main.jsp"
+		"name": "#",
+		"hrefurl": "#"
 	}
 ]

@@ -56,7 +56,7 @@ body {
 			var toBeAppended = ""; 
 			listGroupContent.empty();
 			$.each(data, function(index, element) {
-				if(element["id"] == 101 || element["id"] == 108) {
+				if(element["id"] == 101) {
 					toBeAppended += '<a class="list-group-item active">';
 					toBeAppended += element["name"];
 					toBeAppended += '</a>';
@@ -69,11 +69,6 @@ body {
 			listGroupContent.html(toBeAppended);
 		});
 		
-	    $("#loginBtn").popover({
-    		trigger: "hover",
-    		container: "body",
-    		content: "登录功能正在抓紧制作中，客观您见谅！"
-	        });
 	    $("#reading").popover({
 	    	trigger: "hover",
 	    	container: "body",
@@ -87,12 +82,12 @@ body {
 	    $("#video").popover({
 	    	trigger: "hover",
 	    	placement: "left",
-	    	content: "森叔不是来打架耍帅的，他是来负责逗逼的，大侦探福尔摩斯中的华生也有出演哦，，it‘s always nice to meet you, Mr. Watson!"
+	    	content: ""
 	    });
 	    $("#comic").popover({
 	    	trigger: "hover",
 	    	placement: "left",
-	    	content: "自我约束，誓死也要守护自己最重要的东西，当凯开启八门遁甲最后一门死门的时候，除了激动和震惊之外，小猿还知道了：青春至死不息！"
+	    	content: ""
 	    });
 	});
 </script>
@@ -119,14 +114,25 @@ body {
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="module/programming/main.jsp">编程</a></li>
-				<li><a href="module/reading/main.jsp">读书</a></li>
-				<li><a href="module/music/main.jsp">音乐</a></li>
-				<li><a href="module/video/main.jsp">视频</a></li>
-				<li><a href="module/comic/main.jsp">动漫</a></li>
+				<li><a href="#">留言墙</a></li>
+				<li><a href="#">小玩意</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">其他 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="module/reading/main.jsp">读书</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="module/music/main.jsp">音乐</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="module/video/main.jsp">视频</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="module/comic/main.jsp">动漫</a></li>
+					</ul>
+				</li>
 				<li><a href="#" data-toggle="modal" data-target="#aboutModal">关于</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" id="loginBtn">
+				<li><a href="login.jsp" id="loginBtn">
 					<span class="glyphicon glyphicon glyphicon-log-in" aria-hidden="true"></span>
 				</a></li>
 			</ul>
@@ -228,7 +234,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>视频</small></h2>
 				<p>
-					<a id="video"><cite>女间谍</cite> 广受大家喜爱的光头肌肉男郭达斯坦森又来了，但是，请注意...</a>
+					<a id="video"></a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/video/main.jsp" role="button">详细&raquo;</a>
@@ -239,7 +245,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>动漫</small></h2>
 				<p>
-					<a id="comic"><cite>火影忍者639集：爸爸的青春</cite> 自我约束，誓死也要守护自己...</a>
+					<a id="comic"></a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/comic/main.jsp" role="button">详细&raquo;</a>
