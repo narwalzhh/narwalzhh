@@ -114,7 +114,7 @@ body {
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="module/programming/main.jsp">编程</a></li>
-				<li><a href="#">留言墙</a></li>
+				<li><a href="module/messagewall/main.jsp">留言墙</a></li>
 				<li><a href="#">小玩意</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
