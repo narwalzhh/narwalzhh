@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>narwal个人网站编程模块</title>
+<title>编程模块</title>
 
 <link href="../../refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../../refs/jsutils/jquery-1.7.1.js"></script>
@@ -109,7 +109,7 @@ body {
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="<%=contextPath%>/module/programming/main.jsp">编程</a></li>
-					<li><a href="#">留言墙</a></li>
+					<li><a href="<%=contextPath%>/module/messagewall/main.jsp">留言墙</a></li>
 					<li><a href="#">小玩意</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
