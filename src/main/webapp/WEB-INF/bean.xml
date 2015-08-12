@@ -15,5 +15,13 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="commonDaoImpl" class="cn.com.narwal.utils.CommonDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/> 
+	</bean>
+	
+	<bean id="messagewallDao" class="cn.com.narwal.dao.MessagewallDAO">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/> 
+	</bean>
 
 </beans>
