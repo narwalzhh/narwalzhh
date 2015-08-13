@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface CommonsDAO {
 	
-	public List<Object> listAll();
+	public List<Object> listAll();	
 	
 	public Object findOne(int id);
 	
-	public void save(Object obj);
+	public void save(Object obj);	
 	
 	public void update(int id);
 	
