@@ -1,5 +1,7 @@
 package cn.com.narwal.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class Messagewall {
@@ -52,6 +54,14 @@ public class Messagewall {
 	public String toString() {
 		return "Messagewall [id=" + id + ", nickname=" + nickname
 				+ ", content=" + content + ", time=" + time + "]";
+	}
+	
+	//设置返回对象或各个属性的值
+	public void setPropertyValues(ResultSet rs) throws SQLException {
+		id = rs.getInt("n_id");
+		nickname = rs.getString("n_nickname");
+		content = rs.getString("n_content");
+		time = rs.getTimestamp("n_time");
 	}
 	
 }
