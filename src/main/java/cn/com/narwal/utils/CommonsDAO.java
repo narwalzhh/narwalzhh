@@ -14,7 +14,7 @@ public interface CommonsDAO {
 	
 	public void save(Object obj);	//向数据库保存一个对象
 	
-	public void update(int id);		//更新数据库中一个对象
+	public void update(Object obj);		//更新数据库中一个对象
 	
 	public void delete(int id);		//删除一条记录	
 	

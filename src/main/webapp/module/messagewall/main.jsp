@@ -32,7 +32,7 @@ body {
 .messagewall-show {
 	border: 0px;
 	width: 100%;
-	height: 900px;
+	height: 768px;
 }
 
 
@@ -41,7 +41,49 @@ body {
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		//输入提示框
+		$("#nickname").tooltip({
+			trigger: "focus",
+			placement: "bottom",
+			title: "请输入6个汉字或10个字符！"
+		});
+		
+	
+		$("#content").tooltip({
+			trigger: "focus",
+			placement: "bottom",
+			title: "请输入10到15个汉字！"
+		});
+		
 	});
+		
+	function checkAndSubmit() {
+		
+		//首先判断输入的名字是否复合要求
+		var nickname = $("#nickname").val();
+		if(/^[\u4e00-\u9fa5]+$/.test(nickname)){
+			if(nickname.length > 6) {
+				alert("@（请最多输入6个汉字！）@");
+				return;
+			}
+		}
+		$.ajax({
+			cache: false,
+			async: false,
+			type: "post",
+			//请求后台的保存留言方法
+			url: "messagewall_saveNote.action",
+			data: $("#messagewallForm").serialize(),
+			dataType: "json",
+			success: function(data) {
+				alert(data + "success");
+				var result = $.parseJSON(data); 
+				alert(result + "success");
+			}
+		});
+		
+	}
+	
 </script>
 
 </head>
@@ -62,22 +104,22 @@ body {
 				</a></li>
 			</ul>
 			
-			<form class="navbar-form navbar-left make-center">
+			<form id="messagewallForm" class="navbar-form navbar-left make-center">
 				<div class="form-group">
 					<label class="sr-only" for="">昵称
 						</label> <input type="text" class="form-control"
-						id="" placeholder="昵称">
+						id="nickname" name="messagewallObj.nickname" maxlength="10" placeholder="昵称" >
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="">留言内容</label>
-					<input type="password" class="form-control"
-						id="" placeholder="内容">
+					<input type="text" class="form-control"
+						id="content" name="messagewallObj.content" maxlength="15" placeholder="内容">
 				</div>
-				<button type="submit" class="btn btn-default">留言</button>
+				<button type="submit" class="btn btn-default" onclick="checkAndSubmit()">留言</button>
 			</form>
 			
 			<ul class="nav navbar-nav ">
-				<li><a href="" >
+				<li><a href="#" data-toggle="modal" data-target="#bell">
 					<!-- 返回主页图标 -->
 					<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
 				</a></li>
@@ -85,7 +127,28 @@ body {
 		</div>
 	</div>
 	</nav>
-
+	
+	<!-- 模态弹出框 -->
+	<div class="modal fade" id="bell">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">留言墙</h4>
+				</div>
+				<div class="modal-body">
+					<p>此处留言墙介绍</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">了解</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<script src="../../refs/jsutils/jquery.min.js"></script>
 	<script src="../../refs/bootstrap/js/bootstrap.min.js"></script>
 </body>

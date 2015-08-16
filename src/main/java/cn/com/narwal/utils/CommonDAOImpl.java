@@ -25,7 +25,7 @@ public class CommonDAOImpl implements CommonsDAO {
 		// TODO Auto-generated method stub
 	}
 
-	public void update(int id) {
+	public void update(Object obj) {
 		// TODO Auto-generated method stub
 		
 	}
