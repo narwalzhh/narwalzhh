@@ -11,7 +11,8 @@ import cn.com.narwal.model.Messagewall;
  */
 public class CommonDAOImpl implements CommonsDAO {
 	
-	public List<Object> listAll() {
+	@SuppressWarnings("rawtypes")
+	public List listAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

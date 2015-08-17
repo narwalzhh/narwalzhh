@@ -8,7 +8,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
 
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/" extends="json-default, struts-default">
 
         <default-action-ref name="index" />
 
@@ -23,12 +23,6 @@
     </package>
 
     <!-- Add packages here -->
-	<package name="module/messagewall" namespace="/module/messagewall"
-	extends="struts-default">
-		<action name="messagewall_*" class="cn.com.narwal.action.MessagewallAction"
-			method="{1}">
-			<result>/module/messagewall/main.jsp</result>
-			</action>
-	</package>
+	
 
 </struts>

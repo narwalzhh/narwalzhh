@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
  %>
+ <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -45,40 +46,58 @@ body {
 		$("#nickname").tooltip({
 			trigger: "focus",
 			placement: "bottom",
-			title: "请输入6个汉字或10个字符！"
+			title: "6个汉字或10个字符！"
 		});
 		
 	
 		$("#content").tooltip({
 			trigger: "focus",
 			placement: "bottom",
-			title: "请输入10到15个汉字！"
+			title: "10到15个汉字！"
 		});
 		
 	});
 		
 	function checkAndSubmit() {
 		
-		//首先判断输入的名字是否复合要求
 		var nickname = $("#nickname").val();
+		var content = $("#content").val();
+		
+		//判断两个输入框是否为空
+		if(nickname == "" && content == "") {
+			alert("！@（客官您至少写点什么吧！）@！");
+			return;
+		}
+		if(nickname == "" && content != "") {
+			alert("！@（请问客官尊姓大名！）@！");
+			$("#content").val(content);
+			return;
+		}
+		if(nickname != "" && content == "") {
+			alert("！@（客官您就没有什么要说的吗？）@！");
+			return;
+		}
+		//判断输入的名字是否复合要求
 		if(/^[\u4e00-\u9fa5]+$/.test(nickname)){
 			if(nickname.length > 6) {
-				alert("@（请最多输入6个汉字！）@");
+				alert("！@（请最多输入6个汉字！）@!");
 				return;
 			}
 		}
+		
 		$.ajax({
 			cache: false,
 			async: false,
 			type: "post",
 			//请求后台的保存留言方法
-			url: "messagewall_saveNote.action",
+			url: "saveNote.action",
 			data: $("#messagewallForm").serialize(),
 			dataType: "json",
 			success: function(data) {
-				alert(data + "success");
-				var result = $.parseJSON(data); 
-				alert(result + "success");
+				alert("！@（留言成功，客官：" + data.savedNote.nickname + "）@!");
+			},
+			error: function(data) {
+				alert("！@（出错了，不好意思客官，稍后再来吧！）@!");
 			}
 		});
 		
@@ -117,7 +136,6 @@ body {
 				</div>
 				<button type="submit" class="btn btn-default" onclick="checkAndSubmit()">留言</button>
 			</form>
-			
 			<ul class="nav navbar-nav ">
 				<li><a href="#" data-toggle="modal" data-target="#bell">
 					<!-- 返回主页图标 -->

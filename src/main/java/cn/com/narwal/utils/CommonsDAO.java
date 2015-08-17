@@ -8,7 +8,8 @@ import java.util.List;
  */
 public interface CommonsDAO {
 	
-	public List<Object> listAll();	//列出所有
+	@SuppressWarnings("rawtypes")
+	public List listAll();	//列出所有
 	
 	public Object findOne(int id);	//根据id获取一条记录
 	

@@ -9,22 +9,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../../refs/cssutils/messagewall.css" rel="stylesheet">
+<script src="../../refs/jsutils/jquery-1.7.1.js"></script>
 <title>留言墙模块</title>
 
-<style type="text/css">
+<style type="text/css"></style>
 
-</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$.ajax({
+			cache: false,
+			async: false,
+			type: "post",
+			//请求后台的取得所有留言的方法
+			url: "listAllNote.action",
+			dataType: "json",
+			success: function(data) {
+				showNote(data);
+			},
+			error: function(data) {
+				alert("！@（出错了，不好意思客官，稍后再来吧！）@!");
+			}
+		});
+		
+	});
+	
+	function showNote(data) {
+		var toBeAppended = "";
+		var ulContent = $("#ulContainer");
+		ulContent.empty();
+		var listLength = data.messagewallList.noteList.length;
+		for(var i = 0; i < listLength; i++) {
+			toBeAppended += "<li><a><h2>";
+			toBeAppended += data.messagewallList.noteList[i].nickname;
+			toBeAppended += "</h2><p>";
+			toBeAppended += data.messagewallList.noteList[i].content;
+			toBeAppended += "</p></a></li>";
+		}
+		ulContent.html(toBeAppended);
+	}
+	
+</script>
 
 </head>
 <body>
-
-	<h1>this is message wall!</h1>
-	<ul>
-		<li><a href="">
-				<h2>张辉</h2>
-				<p>这是留言墙是不是</p>
-		</a></li>
-	</ul>
-
+	<ul id="ulContainer"></ul>
 </body>
 </html>

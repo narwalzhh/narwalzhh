@@ -8,7 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import cn.com.narwal.model.Messagewall;
@@ -29,7 +31,7 @@ public class MessagewallDAO extends CommonDAOImpl {
 	private final String insertSql = 
 			"insert into n_messagewall (n_id, n_nickname, n_content, n_time) values (?, ?, ?, ?)";
 	private final String selectAllSql = 
-			"select * from n_messagewall";
+			"select * from n_messagewall order by n_id desc, n_time desc";
 	private final String selectOneSql = 
 			"select * from n_messagewall where n_id = ?";
 	private final String deleteSql = 
@@ -65,21 +67,25 @@ public class MessagewallDAO extends CommonDAOImpl {
 	
 	//重写获取全部信息的方法
 	@Override
-	public List<Object> listAll() {
+	public List<Messagewall> listAll() {
 		// TODO Auto-generated method stub
-		final List<Object> messagewallList = new ArrayList<Object>();
-		return jdbcTemplate.query(selectAllSql, 
-				new RowMapper<Object>() {
+		final List<Messagewall> messagewallList = new ArrayList<Messagewall>();
+		jdbcTemplate.query(selectAllSql, 
+				new ResultSetExtractor<Object>() {
 
-					public Object mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
+					public Object extractData(ResultSet rs)
+							throws SQLException, DataAccessException {
 						// TODO Auto-generated method stub
-						Messagewall messagewall = new Messagewall();
-						messagewall.setPropertyValues(rs);
-						messagewallList.add(messagewall);
-						return messagewallList;
+						while(rs.next()) {
+							Messagewall messagewall = new Messagewall();
+							messagewall.setPropertyValues(rs);
+							messagewallList.add(messagewall);
+						}
+						return null;
 					}
+		
 		});
+		return messagewallList;
 	}
 	
 	//重写删除一条记录的方法
