@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 <title>narwal个人网站主页</title>
 
 <link href="../../refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="../../refs/jsutils/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="../../refs/jsutils/jquery-1.7.1.js"></script>
 
 <style type="text/css">
 body {
@@ -33,31 +33,27 @@ body {
 .messagewall-show {
 	border: 0px;
 	width: 100%;
-	height: 768px;
 }
 
+.container .make-longer {
+	width: 220px;
+}
 
 </style>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-		//输入提示框
-		$("#nickname").tooltip({
-			trigger: "focus",
-			placement: "bottom",
-			title: "6个汉字或10个字符！"
-		});
-		
-	
-		$("#content").tooltip({
-			trigger: "focus",
-			placement: "bottom",
-			title: "10到15个汉字！"
-		});
-		
+		//此处是获得iframe的高度
+		$("#messagewallContainer").load(function(){
+			var mainheight = $(this).contents().find("body").height()+30;
+			if(mainheight < 768) {
+				$(this).height(768);
+			} else {
+				$(this).height(mainheight);
+			}
+		});		
 	});
-		
+	
 	function checkAndSubmit() {
 		
 		var nickname = $("#nickname").val();
@@ -65,22 +61,21 @@ body {
 		
 		//判断两个输入框是否为空
 		if(nickname == "" && content == "") {
-			alert("！@（客官您至少写点什么吧！）@！");
+			alert("Tips:！@（客官您至少写点什么吧！）@！");
 			return;
 		}
 		if(nickname == "" && content != "") {
-			alert("！@（请问客官尊姓大名！）@！");
-			$("#content").val(content);
+			alert("Tips:！@（请问客官尊姓大名！）@！");
 			return;
 		}
 		if(nickname != "" && content == "") {
-			alert("！@（客官您就没有什么要说的吗？）@！");
+			$.messager.alert("Tips:！@（客官您就没有什么要说的吗？）@！");
 			return;
 		}
 		//判断输入的名字是否复合要求
 		if(/^[\u4e00-\u9fa5]+$/.test(nickname)){
 			if(nickname.length > 6) {
-				alert("！@（请最多输入6个汉字！）@!");
+				alert("Tips:！@（请最多输入6个汉字！）@!");
 				return;
 			}
 		}
@@ -94,10 +89,10 @@ body {
 			data: $("#messagewallForm").serialize(),
 			dataType: "json",
 			success: function(data) {
-				alert("！@（留言成功，客官：" + data.savedNote.nickname + "）@!");
+				alert("Tips:！@（留言成功，客官：" + data.savedNote.nickname + "）@!");
 			},
 			error: function(data) {
-				alert("！@（出错了，不好意思客官，稍后再来吧！）@!");
+				alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
 			}
 		});
 		
@@ -108,7 +103,7 @@ body {
 </head>
 <body>
 	<div class="messagewall-container">
-		<iframe class="messagewall-show" src="messagecontent.jsp"></iframe>
+		<iframe id="messagewallContainer" class="messagewall-show" src="messagecontent.jsp"></iframe>
 	</div>
 	<!-- blog的导航条 -->
 	<nav class="navbar navbar-default navbar-fixed-bottom panel-info change-bg-color">
@@ -123,22 +118,22 @@ body {
 				</a></li>
 			</ul>
 			
-			<form id="messagewallForm" class="navbar-form navbar-left make-center">
+			<form id="messagewallForm" class="navbar-form navbar-left">
 				<div class="form-group">
 					<label class="sr-only" for="">昵称
 						</label> <input type="text" class="form-control"
-						id="nickname" name="messagewallObj.nickname" maxlength="10" placeholder="昵称" >
+						id="nickname" name="messagewallObj.nickname" maxlength="10" placeholder="昵称(6个汉字或10个字符)" >
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="">留言内容</label>
-					<input type="text" class="form-control"
-						id="content" name="messagewallObj.content" maxlength="15" placeholder="内容">
+					<input type="text" class="form-control make-longer"
+						id="content" name="messagewallObj.content" maxlength="13" placeholder="内容(请输入10到13个汉字)">
 				</div>
 				<button type="submit" class="btn btn-default" onclick="checkAndSubmit()">留言</button>
 			</form>
 			<ul class="nav navbar-nav ">
 				<li><a href="#" data-toggle="modal" data-target="#bell">
-					<!-- 返回主页图标 -->
+					<!-- 铃铛图标 -->
 					<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
 				</a></li>
 			</ul>
@@ -169,5 +164,6 @@ body {
 	
 	<script src="../../refs/jsutils/jquery.min.js"></script>
 	<script src="../../refs/bootstrap/js/bootstrap.min.js"></script>
+	
 </body>
 </html>
