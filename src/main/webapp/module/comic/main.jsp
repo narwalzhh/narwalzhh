@@ -123,15 +123,6 @@ body {
 		<hr />
 		<div class="row">
 			<div class="col-md-3 about-author">
-				<!-- 个人标签 -->
-				<img src="../../refs/images/narwal.jpg" alt="narwal"
-					class="img-rounded">
-				<p />
-				<address>
-					<strong>昵称：</strong>narwalzhh<br> <strong>星座：</strong>摩羯座
-					Capricorn<br> <strong>职业：</strong>北方小镇学生程序猿<br> <strong>邮件：</strong>1577107936@qq.com<br>
-				</address>
-				<p />
 				<blockquote>
 					<p>只要有树叶飞舞的地方，火就会燃烧。火的影子会照耀着村子，并且，让新的树叶发芽，当想要保护自己做珍惜的人时…忍者真正的力量才会表现出来…</p>
 					<footer>猿飞日斩<cite title="Source Title">《火影忍者》</cite></footer>

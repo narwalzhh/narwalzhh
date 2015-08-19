@@ -99,14 +99,14 @@ body {
 										<label class="col-sm-2 control-label">学号</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id=""
-												placeholder="ID">
+												placeholder="ID" readonly="readonly" >
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">密码</label>
 										<div class="col-sm-10">
 											<input type="password" class="form-control"
-												id="" placeholder="Password">
+												id="" placeholder="Password" readonly="readonly" >
 										</div>
 									</div>
 									<div class="form-group">
@@ -131,7 +131,7 @@ body {
 			<!-- 第二条水平分割线 -->
 			<hr />
 			<!-- footer -->
-			<footer style="margin-bottom: 25px;">
+			<footer style="margin-bottom: 50px;">
 				<p class="pull-right">
 					&middot; <a href="http://www.bootcss.com" target="_blank">Bootstrap中文网</a>
 					&middot; <a href="http://glyphicons.com/" target="_blank">Glyphicons</a>

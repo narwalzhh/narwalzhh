@@ -109,15 +109,6 @@ body {
 		<hr />
 		<div class="row">
 			<div class="col-md-3 about-author">
-				<!-- 个人标签 -->
-				<img src="../../refs/images/narwal.jpg" alt="narwal"
-					class="img-rounded">
-				<p />
-				<address>
-					<strong>昵称：</strong>narwalzhh<br> <strong>星座：</strong>摩羯座
-					Capricorn<br> <strong>职业：</strong>北方小镇学生程序猿<br> <strong>邮件：</strong>1577107936@qq.com<br>
-				</address>
-				<p />
 				<blockquote>
 					<p>I'm the type of person,if you ask me a question, and I don't
 						know the answer,I'm gonna to tell you that I don't know.But I bet

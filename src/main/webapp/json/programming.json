@@ -36,6 +36,36 @@
 	},
 	{	
 		"belongto": "bcxg",
+		"blogname": "Mongodb 学习笔记",
+		"hrefurl": "#"
+	},
+	{	
+		"belongto": "bcxg",
+		"blogname": "Git 学习笔记",
+		"hrefurl": "#"
+	},
+	{	
+		"belongto": "bcxg",
+		"blogname": "Maven 学习笔记",
+		"hrefurl": "#"
+	},
+	{	
+		"belongto": "bcxg",
+		"blogname": "Python 学习笔记1",
+		"hrefurl": "#"
+	},
+	{	
+		"belongto": "bcxg",
+		"blogname": "Python 学习笔记2",
+		"hrefurl": "#"
+	},
+	{	
+		"belongto": "bcxg",
+		"blogname": "Vi 命令参考",
+		"hrefurl": "#"
+	},
+	{	
+		"belongto": "bcxg",
 		"blogname": "编程相关杂记",
 		"hrefurl": "details/bcxgzj.html"
 	},

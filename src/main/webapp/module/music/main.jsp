@@ -101,15 +101,6 @@ body {
 		<hr />
 		<div class="row">
 			<div class="col-md-3 about-author">
-				<!-- 个人标签 -->
-				<img src="../../refs/images/narwal.jpg" alt="narwal"
-					class="img-rounded">
-				<p />
-				<address>
-					<strong>昵称：</strong>narwalzhh<br> <strong>星座：</strong>摩羯座
-					Capricorn<br> <strong>职业：</strong>北方小镇学生程序猿<br> <strong>邮件：</strong>1577107936@qq.com<br>
-				</address>
-				<p />
 				<blockquote>
 					<p>多少年以后 往事随云走 那纷飞的冰雪容不下那温柔 这一生一世 这时间太少 不够证明融化冰雪的深情</p>
 					<footer>李健<cite title="Source Title">《贝加尔湖畔》</cite></footer>
