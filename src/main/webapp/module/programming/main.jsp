@@ -36,7 +36,7 @@ body {
 	margin-bottom: -30px;
 }
 .panel .panel-body iframe {
-	height: 1700px;
+	/* height: 1700px; */
 	width: 815px; 
 	border: 0;
 }
@@ -44,6 +44,16 @@ body {
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$("#contentFrame").load(function(){
+			var mainheight = $(this).contents().find("body").height()+30;
+			if(mainheight < 1300) {
+				$(this).height(1300);
+			} else {
+				$(this).height(mainheight);
+			}
+		});
+		
 		<%
 			if(blogName == null) {
 				blogName = "usfwqsjpgz";

@@ -82,12 +82,12 @@ body {
 	    $("#video").popover({
 	    	trigger: "hover",
 	    	placement: "left",
-	    	content: ""
+	    	content: "没有读过原著的小猿从砖家的视频中了解到了许多以前不曾体会的深意，不管正确与否，单是节目结尾的那一段肺腑之言，就绝对值得一看！"
 	    });
 	    $("#comic").popover({
 	    	trigger: "hover",
 	    	placement: "left",
-	    	content: ""
+	    	content: "儿时最大的遗憾，估计就是没有完整的看完悟空从小到大的每一个细节，为了不能忘却的纪念，这一次一定要玩玩整整的补回来！"
 	    });
 	});
 </script>
@@ -177,7 +177,7 @@ body {
 						<div class="item">
 							<img src="refs/images/taylor.jpg" alt="Taylor Swift">
 							<div class="carousel-caption">
-								<h3>Taylor</h3>
+								<h3>Taylor Swift</h3>
 								<p>整天学习，整天敲代码，累不累，听首歌放松一下吧，放松完继续苦X的生活！</p>
 							</div>
 						</div>
@@ -234,7 +234,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>视频</small></h2>
 				<p>
-					<a id="video"></a>
+					<a id="video"><cite>你不知道的西游记</cite> 没有读过原著的小猿从砖家的视频中了解到了许多以前...</a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/video/main.jsp" role="button">详细&raquo;</a>
@@ -245,7 +245,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>动漫</small></h2>
 				<p>
-					<a id="comic"></a>
+					<a id="comic"><cite>龙珠超</cite> 儿时最大的遗憾，估计就是没有完整的看完悟空从小到大的...</a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/comic/main.jsp" role="button">详细&raquo;</a>

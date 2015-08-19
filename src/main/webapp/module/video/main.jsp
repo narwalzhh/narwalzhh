@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>频模块</title>
+<title>视频模块</title>
 
 <link href="../../refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../../refs/jsutils/jquery-1.7.1.js"></script>

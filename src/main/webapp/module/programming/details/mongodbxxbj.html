@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MongoDB 学习笔记</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>MongoDB 学习笔记</h1>
+		<h2>
+			<small>学习环境：Linux Ubuntu 14.04.1 64位 状态：更新中...</small>
+		</h2>
+		<h2>
+			<small>仅有笔记，并没有什么卵用，重在实践！</small>
+		</h2>
+		<hr />
+		<h5>
+			<strong>1、官网下载 MongoDB 二进制包</strong>
+		</h5>
+		官网下载地址：<a href="#"></a>
+		<br/>
+		解包后，可用到的几个二进制文件分别是：
+		<dl>
+			<dt>启动 MongoDB 服务</dt>
+			<dd><code>mongod</code></dd>
+			<dt>MongoDB Shell 连接工具</dt>
+			<dd><code>mongo</code></dd>
+			<dt>MongoDB 导入工具</dt>
+			<dd><code>mongoimport</code></dd>
+			<dd><code>mongorestore</code></dd>
+			<dt>MongoDB 导出工具</dt>
+			<dd><code>mongoexport</code></dd>
+			<dd><code>mongodump</code></dd>
+			<dt>此外：</dt>
+			<dd><code>mongooplog</code></dd>
+			<dd><code>mongostat</code></dd>
+		</dl>
+		<blockquote>
+			<p>
+				<small>学习过程中暂时只用到了 <code>mongod</code> 和 <code>mongo</code></small>
+			</p>
+		</blockquote>
+
+		<h5>
+			<strong>2、新建测试目录 mongodb-test ，在目下创建以下文件夹：</strong>
+		</h5>
+		<dl>
+			<dt>存储数据</dt>
+			<dd><code>data</code></dd>
+			<dt>存储日志</dt>
+			<dd><code>log</code></dd>
+			<dt>二进制文件存放目录</dt>
+			<dd><code>bin</code></dd>
+			<dt>配置文件存放目录</dt>
+			<dd><code>conf</code></dd>
+		</dl>
+
+		<h5>
+			<strong>3、将解包中的 <code>mongod</code> 和 <code>mongo</code> 二进制文件复制到新建的 <code>log</code> 目录下</strong>
+		</h5>
+		
+		<h5>
+			<strong>4、在新建的 <code>conf</code> 文件夹下创建文件 <code>mongod.conf</code>，并写入：</strong>
+		</h5>
+		<dl>
+			<dt>#端口号</dt>
+			<dd><code>#port=</code></dd>
+			<dt>#数据存放地址</dt>
+			<dd><code>dbpath = data</code></dd>
+			<dt>#日志存放地址</dt>
+			<dd><code>logpath = log/mongod.log</code></dd>
+			<dt>#后台运行</dt>
+			<dd><code>fork = true</code></dd>
+		</dl>
+	
+
+		<h5>
+			<strong>5、启动数据库服务： <code>./bin/mongod -f conf/mongod.conf</code> </strong>
+		</h5>
+	
+
+		<h5>
+			<strong>6、使用 mongo shell 连接： <code>./bin/mongo 127.0.0.1/test</code></strong>
+		</h5>
+		
+		<h5>
+			<strong>7、mongo shell 下关闭数据库服务：</strong>
+		</h5>
+		<dl>
+			<dd><code>use admin</code></dd>
+			<dd><code>db.shutdownServer()</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>8、mongo shell 下操作命令：</strong>
+		</h5>
+		<dl>
+			<dt>#展示存在的数据库</dt>
+			<dd><code>show dbs</code></dd>
+			<dt>#使用某数据库</dt>
+			<dd><code>use db_name</code></dd>
+			<dt>#删除某数据库，先 use 再 drop</dt>
+			<dd><code>db.dropDatabase()</code></dd>
+			<dt>#插入数据，使用 json format</dt>
+			<dd><code>db.collection_name.insert(arg1)</code></dd>
+			<dt>#展示数据库中的集合</dt>
+			<dd><code>show collections</code></dd>
+			<dt>#参数可以为空</dt>
+			<dd><code>db.collection_name.find(null 或  arg1)</code></dd>
+			<dt>#展示记录数目</dt>
+			<dd><code>db.collection_name.find().count()</code></dd>
+			<dt>使用 skip 跳过n 条数据，limit 限制查询条数，sort 接受排序列，使用 json format</dt>
+			<dd><code>db.collecion_name.find().skip(n).limit(n).sort(arg1)</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>9、mongo shell 下操作命令：</strong>
+		</h5>
+		<dl>
+			<dt>#清屏</dt>
+			<dd><code>cls</code></dd>
+			<dt>#显示数据库中的表</dt>
+			<dd><code>show tables</code></dd>
+			<dt>#删除集合或表</dt>
+			<dd><code>db.collection_name.drop()</code></dd>
+			<dt>#接受两个参数，arg1 查询条件，arg2 要更新的数据，均使用 json format</dt>
+			<dd><code>db.collection_name.updata(arg1, arg2)</code></dd>
+			<dt>#更新一条记录中多个数据中的某一个数据，arg2 直接写数据，如 "x" : 1</dt>
+			<dd><code>db.collection_name.updata(arg1, {$set:{arg2}})</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>10、upsert，更新一条不存在的数据，先插入，再更新：</strong>
+		</h5>
+		<dl>
+			<dd><code>db.collection_name.update(arg1, agr2, true)</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>11、更新多条数据，(使用两个参数的更新语句，数据相同的情况下，默认只更新最先查询到的数据)</strong>
+		</h5>
+		<dl>
+			<dd><code>db.collection_name.update(arg1, arg2, false, true)</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>12、使用 remove 函数删除数据，不允许不带参数</strong>
+		</h5>
+		<dl>
+			<dd><code>db.collection_name.remove(arg1)</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>13</strong>
+		</h5>
+		<dl>
+			<dt>#查询集合的索引</dt>
+			<dd><code>db.collection_name.getIndexes()</code></dd>
+			<dt>#添加 x 的索引 ，1为正向，-1为负向</dt>
+			<dd><code>db.collection_name.ensureIndex({x : 1})</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>14</strong>
+		</h5>
+		<h6><strong>_id 索引：</strong></h6>
+		<dl>
+			<dt>默认建立</dt>
+			<dt>#查询一条数据</dt>
+			<dd><code>db.collection_name.findOne()</code></dd>
+		</dl>
+		<h6><strong>单键索引：</strong></h6>
+		<dl>
+			<dt>最普通的索引</dt>
+			<dt>需要手动创建</dt>
+			<dt>#增加索引，可重复增加相同的索引</dt>
+			<dd><code>db.ensureIndex({x : 1})</code></dd>
+		</dl>
+		<h6><strong>多键索引：</strong></h6>
+		<dl>
+			<dt>创建形式与单键索引的值相同，区别在于字段的值</dt>
+			<dt>具有多个记录，例如数组</dt>
+			<dt>#创建多键索引</dt>
+			<dd><code>db.collection_name.insert({x : 1, 2, 3, 4, 5})</code></dd>
+		</dl>
+		<h6><strong>复合索引：</strong></h6>
+		<dl>
+			<dt>查询条件不止一个</dt>
+			<dt>#创建复合索引</dt>
+			<dd><code>db.collection_name.ensureIndex({x : 1, y : 1})</code></dd>
+		</dl>
+		<h6><strong>过期索引：</strong></h6>
+		<dl>
+			<dt>在一段时间后会过期的索引</dt>
+			<dt>索引过期后，相应数据会被删除</dt>
+			<dt>适合存储一段事件后就会失效的数据</dt>
+			<dt>如果指定了 ISODate 数组，则按最小的事件进行删除</dt>
+			<dt>删除时间是不精确的，进程 60 秒执行一次</dt>
+			<dt>db.collection_name.insert({time : new Date()})</dt>
+			<dt>#存储在过期索引字段的值必须是指定的时间类型，必须是 ISODate 或 ISODdate 数组 ，不能使用事件戳</dt>
+			<dd><code>db.collection_name.ensureIndex({time: 1}, {expireAfterSeconds : 10})</code></dd>
+		</dl>
+		
+		<h5>
+			<strong>15、全文索引：</strong>
+		</h5>
+		<dl>
+			<dt>对字符串与字符串数组创建全文可搜索的索引</dt>
+		</dl>
+		
+		<h5>
+			<strong>16、地理位置索引：</strong>
+		</h5>
+		
+
+		<hr>
+		<h4>
+			<small>参考：</small>
+		</h4>
+		<a
+			href=""
+			target="_blank">
+			笔记来源于<cite>慕课网</cite>...
+		</a> <br />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

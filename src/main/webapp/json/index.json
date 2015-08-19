@@ -4,58 +4,47 @@
 		"name": "编程"
 	},
 	{
-		"id": 102,
+		"name": "MongoDB 学习笔记",
+		"hrefurl": "module/programming/main.jsp?blogName=mongodbxxbj"
+	},
+	{
+		"name": "Git 学习笔记",
+		"hrefurl": "#"
+	},
+	{
+		"name": "Vi 命令参考",
+		"hrefurl": "#"
+	},
+	{
+		"name": "#",
+		"hrefurl": "#"
+	},
+	{
+		"name": "#",
+		"hrefurl": "#"
+	},
+	{
 		"name": "Ubuntu Server数据盘挂载",
 		"hrefurl": "module/programming/main.jsp?blogName=usfwqsjpgz"
 	},
 	{
-		"id": 103,
 		"name": "Ubuntu Server Ftp服务器搭建",
 		"hrefurl": "module/programming/main.jsp?blogName=usftpfwqdj"
 	},
 	{
-		"id": 104,
 		"name": "Ubuntu Mysql数据库安装及配置",
 		"hrefurl": "module/programming/main.jsp?blogName=umysqlazjzfjxg"
 	},
 	{
-		"id": 105,
 		"name": "Ubuntu Server SVN服务器搭建",
 		"hrefurl": "module/programming/main.jsp?blogName=ussvnfwqdj"
 	},
 	{
-		"id": 106,
 		"name": "Ubuntu JDK1.7安装及配置",
 		"hrefurl": "module/programming/main.jsp?blogName=ujdk17az"
 	},
 	{
-		"id": 107,
 		"name": "Ubuntu Server常见问题杂记",
 		"hrefurl": "module/programming/main.jsp?blogName=fwqxgzj"
-	},
-	{
-		"id": 108,
-		"name": "#",
-		"hrefurl": "#"
-	},
-	{
-		"id": 109,
-		"name": "#",
-		"hrefurl": "#"
-	},
-	{
-		"id": 110,
-		"name": "#",
-		"hrefurl": "#"
-	},
-	{
-		"id": 111,
-		"name": "#",
-		"hrefurl": "#"
-	},
-	{
-		"id": 112,
-		"name": "#",
-		"hrefurl": "#"
 	}
 ]

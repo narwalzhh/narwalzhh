@@ -36,13 +36,13 @@
 	},
 	{	
 		"belongto": "bcxg",
-		"blogname": "Mongodb 学习笔记",
-		"hrefurl": "#"
+		"blogname": "MongoDB 学习笔记",
+		"hrefurl": "details/mongodbxxbj.html"
 	},
 	{	
 		"belongto": "bcxg",
 		"blogname": "Git 学习笔记",
-		"hrefurl": "#"
+		"hrefurl": "details/gitxxbj.html"
 	},
 	{	
 		"belongto": "bcxg",

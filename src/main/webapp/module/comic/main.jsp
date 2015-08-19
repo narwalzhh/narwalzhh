@@ -46,6 +46,8 @@ body {
 					toBeAppended += '<tr><td><cite>';
 					toBeAppended += element["comicname"];
 					toBeAppended += '</cite></td><td>';
+					toBeAppended += element["state"];
+					toBeAppended += '</td><td>';
 					toBeAppended += element["description"];
 					toBeAppended += '</td></tr>';
 					dhContent.html(toBeAppended);
@@ -53,6 +55,8 @@ body {
 					toBeAppended2 += '<tr><td><cite>';
 					toBeAppended2 += element["comicname"];
 					toBeAppended2 += '</cite></td><td>';
+					toBeAppended2 += element["state"];
+					toBeAppended2 += '</td><td>';
 					toBeAppended2 += element["description"];
 					toBeAppended2 += '</td></tr>';
 					mhContent.html(toBeAppended2);
@@ -138,6 +142,7 @@ body {
 							<thead>
 								<tr>
 									<th>名称</th>
+									<th>状态</th>
 									<th>简介</th>
 								</tr>
 							</thead>
@@ -150,6 +155,7 @@ body {
 							<thead>
 								<tr>
 									<th>名称</th>
+									<th>状态</th>
 									<th>简介</th>
 								</tr>
 							</thead>

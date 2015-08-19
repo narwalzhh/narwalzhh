@@ -2,27 +2,30 @@
 	{
 		"belongto": "dh",
 		"comicname": "火影忍者",
-		"description": "#"
+		"state": "更新",
+		"description": "细细一想，小猿和火影原来都是共同书写着青春，加油！"
 	},
 	{
 		"belongto": "dh",
 		"comicname": "龙珠超",
-		"description": "#"
+		"state": "更新",
+		"description": "遗憾的儿时没有看完龙珠，这次一定要一集不落的全部补回来！"
 	},
 	{
 		"belongto": "mh",
 		"comicname": "火影忍者",
-		"description": "#"
+		"state": "完结",
+		"description": "火影的温馨大结局，确实让人大大的激动了好久呢，话说，傅人传啥时候开始？"
 	},
 	{
 		"belongto": "other",
 		"comicname": "火影 THE LAST",
-		"description": "#"
+		"description": "作为鸣人为主角的最后剧场版，太子将展开花式虐狗，接受攻击吧，单身汪们！"
 	},
 	{
 		"belongto": "other",
 		"comicname": "小黄人2015",
-		"description": "萌萌嗒的小黄人来袭，让我们一起high起来吧"
+		"description": "萌萌嗒的小黄人来袭，让我们一起 high 起来吧！"
 	},
 	{
 		"belongto": "other",
