@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MongoDB 学习笔记</title>
+<title>Git 学习笔记</title>
 
 <link href="../../../refs/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -31,219 +31,151 @@ dl {
 	<div class="container">
 		<h1>Git 学习笔记</h1>
 		<h2>
-			<small>学习环境：Linux Ubuntu 14.04.1 64位 状态：完成...</small>
+			<small>学习环境：Linux Ubuntu 14.04.1 64位 状态：更新...</small>
 		</h2>
 		<h2>
 			<small>仅有笔记，并没有什么卵用，重在实践！</small>
 		</h2>
 		<hr />
-		<h5>
-			<strong>1、官网下载 MongoDB 二进制包</strong>
-		</h5>
-		官网下载地址：<a href="#"></a>
-		<br/>
-		解包后，可用到的几个二进制文件分别是：
-		<dl>
-			<dt>启动 MongoDB 服务</dt>
-			<dd><code>mongod</code></dd>
-			<dt>MongoDB Shell 连接工具</dt>
-			<dd><code>mongo</code></dd>
-			<dt>MongoDB 导入工具</dt>
-			<dd><code>mongoimport</code></dd>
-			<dd><code>mongorestore</code></dd>
-			<dt>MongoDB 导出工具</dt>
-			<dd><code>mongoexport</code></dd>
-			<dd><code>mongodump</code></dd>
-			<dt>此外：</dt>
-			<dd><code>mongooplog</code></dd>
-			<dd><code>mongostat</code></dd>
-		</dl>
+			1、使用 <code>sudo apt-get install git</code> 来安装 git
+		
 		<blockquote>
 			<p>
-				<small>学习过程中暂时只用到了 <code>mongod</code> 和 <code>mongo</code></small>
+				<small>安装之前可以使用 <code>sudo apt-get update</code> 更新一下软件列表</small>
 			</p>
 		</blockquote>
+		
+			2、使用 <code>git --version</code> 来确认 git 是否安装成功
+		<br/><br/>
+		
+			3、
+		<br/><br/>
+		
+			4、新建测试文件夹，进入文件夹，使用 <code>git init</code> 来初始化一个空的 git 仓库
+		<br/><br/>
+		
+			5、使用 <code>git add</code> 向库中添加新建的文件，此命令可以多次执行，使用 <code>git add -A</code>可以一次性添加多个文件 
+		<br/><br/>
+		
+			6、使用 <code>git commit -m "description"</code> 来将添加的文件提交到版本库中，此命令可以同时提交多个文件
+		<br/><br/>
+		
+			7、要随时掌握工作区的状态，使用 <code>git status</code> 命令，可以注意到是否有文件修改和未提交
+		<br/><br/>
+		
+			8、如果 <code>git status</code> 显示有文件被修改过，使用 <code>git diff</code> 可以查看到被修改的内容，如果确认无误后可以执行 "add" 与 "commit" 命令
+		<br/><br/>
+		
+			9、使用 <code>git log</code> 可以查看有近期到早期的一些文件修改情况，跟参数 <code>--pretty=oneline</code> 可以使信息在一行显示，<code>git reflog</code> 可以追踪文件的变更和执行的操作
+		<br/><br/>
+		
+			10、使用 <code>git reset --hard HEAD^</code> 可以回复到最近的上一个版本，两个 "^" 号表示回到最近的上2个版本。如果回复的实间较早，可以这样写 "HEAD～100"
+		<br/><br/>
+		
+			11、<code>git reset --hard commit_id</code>，其中 "commit id" 是你要回复的文件的 "id" 号，通过 "git log" 或者是 "git reflog" 来查找
+		<br/><br/>
+		
+			12、git 管理的是修改，而不是文件，可以用实验证明，用 <code>git diff HEAD -- file</code> 可以查看工作区中和版本库中的文件区别
+		<br/><br/>
+		
+			13、当乱改了工作区的某个文件内容时，想直接丢弃工作区的修改，可以使用 <code>git checkout -- file</code>，<code>--</code> 这个参数很重要
+		<br/><br/>
+		
+			14、当你不但乱改了工作区的某个文件内容，还添加进了暂存区，想丢弃修改时，分两步：第一步用 <code>git reset HEAD file</code>，退回到了未 "add" 状态，然后再用 <code>git checkout -- file</code>，撤销对工作区的修改	
+		<br/><br/>
+			
+			15、已经提交了不合适的修改到版本库时，想要撤销本次提交，可以使用版本退回，<code>git reset --hard HEAD(commit id)</code>
+		<br/><br/>
+		
+			16、命令 <code>git rm</code> 用于删除一个文件，如果此文件确实需要删除，直接 <code>git commit -m "desc"</code> 就可以提交删除到仓库，如果是删除错了，则需要撤销对暂存区的修改 <code>git reset HEAD file</code>，然后使用命令 <code>git checkout -- file</code>，就可以将版本库中的文件回复到工作区
+		<br/><br/>
+		
+			17、如果用 <code>rm</code> 命令删除文件，如果要撤销对工作区的修改，可以直接使用 <code>git checkout -- file</code>，撤销对工作区的修改
+		<br/><br/>
+		
+			18、使用命令创建 <code>SSH Key: ssh-keygen -t rsa -C "example@xxxx.com"</code>，一路回车，不设置密码
+		<br/><br/>
+		
+			19、先创建本地版本库，再创建远程版本库 git_text.git,使用命令 <code>git remote add origin git@github.com:narwalzhh/git_text.git</code> 与远程版本库相连接，使用 <code>git push -u origin master</code> 第一次向远程版本库提交代码，以后使用 <code>git push origin master</code> 命令就可将本地库推送到远程库
+		<br/><br/>
+		
+			20、首先在 github 新建一个仓库，知道了其地址后，在想要操作的文件夹下使用 <code>gti clone git@github.com:narwalzhh/yourRepos.git</code> 将仓库 "clone" 到自己的工作电脑上来
+		<br/><br/>
+		
+			21、git 鼓励大量使用分支，一下为分支的简单操作：
+		<dl>
+			<dt>#查看分支</dt>
+			<dd><code>git branch</code></dd>
+			<dt>#创建分支</dt>
+			<dd><code>git branch name</code></dd>
+			<dt>#切换分支</dt>
+			<dd><code>git checkout name</code></dd>
+			<dt>#创建+切换+分支</dt>
+			<dd><code>git checkout -b name</code></dd>
+			<dt>#合并某分支到当前分支</dt>
+			<dd><code>git merge name</code></dd>
+			<dt>#删除分支</dt>
+			<dd><code>git branch -d name</code></dd>
+		</dl>
+		
+			22、当 git 无法自动合并分支时，说明分支和 master 产生了冲突，所以要解决冲突后继续执行 "git add" 和 "git commit"，用 <code>git log --graph</code> 命令可以查看到分支合并图
+		<br/><br/>
+		
+			23、git 如果合并时，可能会使用 <code>fast forward</code> 模式，这种模式下，删除分支后，会丢掉分支信息，如果禁用 "ff" 模式，git 会在 "merge" 时生成一个新的 "commit"，这样，从分支历史上就可以看出分支信息。禁用 "ff" 模式： <code>git merge --no-ff -m "desc" branch</code>, git 的 "master" 分支应该是稳定的，分支 "dev" 应该是不稳定的
+		<br/><br/>
+		
+			24、修复 bug 时，会通过创建新的 bug 分支来进行修复，然后合并，最后删除，如果手头有未完成工作，可以先把现场 <code>git stash</code> 一下，然后区修复 bug，修复后，再用 <code>git stash pop</code>，回到工作现场。可以多次 stash，恢复的时候，先用 <code>git stash list</code> 查看，然后回复指定的 stash，用命令：<code>git stash apply stash@{0}</code>
+		<br/><br/>
+		
+			25、当在一个新的分支上完成工作并且 "add" 和 "commit" 了以后，回到原分支进行合并，若此时接到命令，销毁新的分支上的工作，则是用强制删除分支：<code>git branch -D branch</code>
+		<br/><br/>
+		
+			26、使用 <code>git remote</code> 查看远程据的信息，使用 <code>git remote -v</code> 显示更详细的信息，master 分支为主分支，时刻要与远程同步，dev 分支是开发分支，所有团队成员要在上面工作，所以要同步 <code>git checkout -b dev origin/dev</code> 追踪远程分支 dev 到本地
+		<br/><br/>
+			
+			27、多人协作的工作模式：
+		<dl>
+			<dt>#首先</dt>
+			<dd>试图使用 <code>git push origin branch</code> 推送自己的修改</dd>
+			<dt>#若推送失败</dt>
+			<dd>远程分支比本地分支更新，需要使用 <code>git pull</code> 试图合并</dd>
+			<dt>#若合并失败</dt>
+			<dd>则为建立和远程的链接，需使用：<code>git branch --set-upstream branch origin/branch</code> 然后再使用 <code>git pull</code>，如果有冲突，则和前面的解决冲突的方式相同</dd>
+		</dl>
 
-		<h5>
-			<strong>2、新建测试目录 mongodb-test ，在目下创建以下文件夹：</strong>
-		</h5>
+			28、命令 <code>git tag name</code> 用于创建一个新的标签，默认为 "HEAD"，也可以指定一个 "commit id"：
 		<dl>
-			<dt>存储数据</dt>
-			<dd><code>data</code></dd>
-			<dt>存储日志</dt>
-			<dd><code>log</code></dd>
-			<dt>二进制文件存放目录</dt>
-			<dd><code>bin</code></dd>
-			<dt>配置文件存放目录</dt>
-			<dd><code>conf</code></dd>
+			<dd><code>git tag -a tagname -m "desc"</code> 可以指定标签信息</dd>
+			<dd><code>git tag -s tagname -m "desc"</code> 可以用 PGP 签名标签</dd>
+			<dd><code>git tag</code> 可以查看所有标签</dd>
+			<dd><code>git show tagname</code> 可以查看标签的详细信息</dd>
+			<dd><code>GnuPG</code> 帮助文档配置 Key</dd>
 		</dl>
 
-		<h5>
-			<strong>3、将解包中的 <code>mongod</code> 和 <code>mongo</code> 二进制文件复制到新建的 <code>log</code> 目录下</strong>
-		</h5>
-		
-		<h5>
-			<strong>4、在新建的 <code>conf</code> 文件夹下创建文件 <code>mongod.conf</code>，并写入：</strong>
-		</h5>
+			29、
 		<dl>
-			<dt>#端口号</dt>
-			<dd><code>#port=</code></dd>
-			<dt>#数据存放地址</dt>
-			<dd><code>dbpath = data</code></dd>
-			<dt>#日志存放地址</dt>
-			<dd><code>logpath = log/mongod.log</code></dd>
-			<dt>#后台运行</dt>
-			<dd><code>fork = true</code></dd>
-		</dl>
-	
-
-		<h5>
-			<strong>5、启动数据库服务： <code>./bin/mongod -f conf/mongod.conf</code> </strong>
-		</h5>
-	
-
-		<h5>
-			<strong>6、使用 mongo shell 连接： <code>./bin/mongo 127.0.0.1/test</code></strong>
-		</h5>
-		
-		<h5>
-			<strong>7、mongo shell 下关闭数据库服务：</strong>
-		</h5>
-		<dl>
-			<dd><code>use admin</code></dd>
-			<dd><code>db.shutdownServer()</code></dd>
+			<dd><code>git push origin tagname</code> 可以推送一个本地标签</dd>
+			<dd><code>git push origin --tags</code> 可以推送全部未推送过的本地标签</dd>
+			<dd><code>git tag -d tagname</code> 可以删除一个本地标签</dd>
+			<dd><code>git push origin :refs/tags/tagname</code> 可以删除一个远程标签</dd>
 		</dl>
 		
-		<h5>
-			<strong>8、mongo shell 下操作命令：</strong>
-		</h5>
-		<dl>
-			<dt>#展示存在的数据库</dt>
-			<dd><code>show dbs</code></dd>
-			<dt>#使用某数据库</dt>
-			<dd><code>use db_name</code></dd>
-			<dt>#删除某数据库，先 use 再 drop</dt>
-			<dd><code>db.dropDatabase()</code></dd>
-			<dt>#插入数据，使用 json format</dt>
-			<dd><code>db.collection_name.insert(arg1)</code></dd>
-			<dt>#展示数据库中的集合</dt>
-			<dd><code>show collections</code></dd>
-			<dt>#参数可以为空</dt>
-			<dd><code>db.collection_name.find(null 或  arg1)</code></dd>
-			<dt>#展示记录数目</dt>
-			<dd><code>db.collection_name.find().count()</code></dd>
-			<dt>使用 skip 跳过n 条数据，limit 限制查询条数，sort 接受排序列，使用 json format</dt>
-			<dd><code>db.collecion_name.find().skip(n).limit(n).sort(arg1)</code></dd>
-		</dl>
+			30、进入你所看中的开源项目的主页，点击 "fork" 就在自己的帐号下克隆了一个开源项目仓库，然后，从自己的帐号下 "clone"，一定要从自己的帐号下 "clone"，这样你才能推送。如果希望官方接受你的修改，就要 "pull request" 一下，对方不一定接受	
+		<br/><br/>
 		
-		<h5>
-			<strong>9、mongo shell 下操作命令：</strong>
-		</h5>
-		<dl>
-			<dt>#清屏</dt>
-			<dd><code>cls</code></dd>
-			<dt>#显示数据库中的表</dt>
-			<dd><code>show tables</code></dd>
-			<dt>#删除集合或表</dt>
-			<dd><code>db.collection_name.drop()</code></dd>
-			<dt>#接受两个参数，arg1 查询条件，arg2 要更新的数据，均使用 json format</dt>
-			<dd><code>db.collection_name.updata(arg1, arg2)</code></dd>
-			<dt>#更新一条记录中多个数据中的某一个数据，arg2 直接写数据，如 "x" : 1</dt>
-			<dd><code>db.collection_name.updata(arg1, {$set:{arg2}})</code></dd>
-		</dl>
+			31、在 git 工作区的根目录下创建一个特殊的 <code>.gitignore</code> 文件，然后把要忽略的文件名填写进去，git 就会自动忽略这些文件, <code>.gitignore</code> 文件本身要放到版本库中，并且可以对其做版本管理
+		<br/><br/>
 		
-		<h5>
-			<strong>10、upsert，更新一条不存在的数据，先插入，再更新：</strong>
-		</h5>
-		<dl>
-			<dd><code>db.collection_name.update(arg1, agr2, true)</code></dd>
-		</dl>
+			32、显示最近的一次提交：<code>git log -1</code>，注意是数字 1
 		
-		<h5>
-			<strong>11、更新多条数据，(使用两个参数的更新语句，数据相同的情况下，默认只更新最先查询到的数据)</strong>
-		</h5>
-		<dl>
-			<dd><code>db.collection_name.update(arg1, arg2, false, true)</code></dd>
-		</dl>
-		
-		<h5>
-			<strong>12、使用 remove 函数删除数据，不允许不带参数</strong>
-		</h5>
-		<dl>
-			<dd><code>db.collection_name.remove(arg1)</code></dd>
-		</dl>
-		
-		<h5>
-			<strong>13</strong>
-		</h5>
-		<dl>
-			<dt>#查询集合的索引</dt>
-			<dd><code>db.collection_name.getIndexes()</code></dd>
-			<dt>#添加 x 的索引 ，1为正向，-1为负向</dt>
-			<dd><code>db.collection_name.ensureIndex({x : 1})</code></dd>
-		</dl>
-		
-		<h5>
-			<strong>14</strong>
-		</h5>
-		<h6><strong>_id 索引：</strong></h6>
-		<dl>
-			<dt>默认建立</dt>
-			<dt>#查询一条数据</dt>
-			<dd><code>db.collection_name.findOne()</code></dd>
-		</dl>
-		<h6><strong>单键索引：</strong></h6>
-		<dl>
-			<dt>最普通的索引</dt>
-			<dt>需要手动创建</dt>
-			<dt>#增加索引，可重复增加相同的索引</dt>
-			<dd><code>db.ensureIndex({x : 1})</code></dd>
-		</dl>
-		<h6><strong>多键索引：</strong></h6>
-		<dl>
-			<dt>创建形式与单键索引的值相同，区别在于字段的值</dt>
-			<dt>具有多个记录，例如数组</dt>
-			<dt>#创建多键索引</dt>
-			<dd><code>db.collection_name.insert({x : 1, 2, 3, 4, 5})</code></dd>
-		</dl>
-		<h6><strong>复合索引：</strong></h6>
-		<dl>
-			<dt>查询条件不止一个</dt>
-			<dt>#创建复合索引</dt>
-			<dd><code>db.collection_name.ensureIndex({x : 1, y : 1})</code></dd>
-		</dl>
-		<h6><strong>过期索引：</strong></h6>
-		<dl>
-			<dt>在一段时间后会过期的索引</dt>
-			<dt>索引过期后，相应数据会被删除</dt>
-			<dt>适合存储一段事件后就会失效的数据</dt>
-			<dt>如果指定了 ISODate 数组，则按最小的事件进行删除</dt>
-			<dt>删除时间是不精确的，进程 60 秒执行一次</dt>
-			<dt>db.collection_name.insert({time : new Date()})</dt>
-			<dt>#存储在过期索引字段的值必须是指定的时间类型，必须是 ISODate 或 ISODdate 数组 ，不能使用事件戳</dt>
-			<dd><code>db.collection_name.ensureIndex({time: 1}, {expireAfterSeconds : 10})</code></dd>
-		</dl>
-		
-		<h5>
-			<strong>15、全文索引：</strong>
-		</h5>
-		<dl>
-			<dt>对字符串与字符串数组创建全文可搜索的索引</dt>
-		</dl>
-		
-		<h5>
-			<strong>16、地理位置索引：</strong>
-		</h5>
-		
-
 		<hr>
 		<h4>
 			<small>参考：</small>
 		</h4>
 		<a
-			href=""
+			href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000"
 			target="_blank">
-			笔记来源于<cite>慕课网</cite>...
+			笔记来源于<cite>廖雪峰官方网站 Git 教程...</cite>
 		</a> <br />
 	</div>
 
