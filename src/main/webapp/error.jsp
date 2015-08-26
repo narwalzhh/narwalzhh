@@ -14,14 +14,6 @@ pageEncoding="UTF-8"%>
 <meta name="description" content="narwal的个人网站，好的东西要与人分享">
 <title>narwal个人网站主页</title>
 
-<!-- easyui -->
-<script type="text/javascript" src="refs/easyui/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="refs/easyui/themes/metro/easyui.css">
-<link rel="stylesheet" type="text/css" href="refs/easyui/themes/icon.css">
-<script type="text/javascript" src="refs/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="refs/easyui/locale/easyui-lang-zh_CN.js"></script>
-
-
 <script type="text/javascript">
 		
 </script>

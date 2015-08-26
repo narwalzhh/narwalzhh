@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vi 命令参考</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Vi 命令参考</h1>
+		<h2>
+			<small>学习环境：Linux Ubuntu 14.04.1 64位 状态：完成...</small>
+		</h2>
+		<h2>
+			<small>仅有笔记，并没有什么卵用，重在实践！</small>
+		</h2>
+		<hr />
+		
+			1、移动光标
+		<dl>
+			<dd><code>H</code>&nbsp;&nbsp;&nbsp;&nbsp;移到屏幕的左上角</dd>
+			<dd><code>M</code>&nbsp;&nbsp;&nbsp;&nbsp;移到屏幕的中间行开头</dd>
+			<dd><code>L</code>&nbsp;&nbsp;&nbsp;&nbsp;移到屏幕的最后一行</dd>
+			<dd><code>[</code>&nbsp;&nbsp;&nbsp;&nbsp;移到文件开始位置(双击)</dd>
+			<dd><code>]</code>&nbsp;&nbsp;&nbsp;&nbsp;移到文件结束位置(双击)</dd>
+			<dd><code>:n</code>&nbsp;&nbsp;&nbsp;&nbsp;移到文件的第n行 </dd>
+			<dd><code>Ctrl + b</code>&nbsp;&nbsp;&nbsp;&nbsp;屏幕上卷一个菜单</dd>
+			<dd><code>Ctrl + F</code>&nbsp;&nbsp;&nbsp;&nbsp;屏幕下卷一个菜单</dd>
+			<dd><code>h</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标左移一格</dd>
+			<dd><code>l</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标右移一格</dd>
+			<dd><code>j</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标下移一格</dd>
+			<dd><code>k</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标上移一格</dd>
+			<dd><code>w</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标移到下一个小字的前面</dd>
+			<dd><code>b</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标移到前一个小字的前面</dd>
+			<dd><code>0</code>&nbsp;&nbsp;&nbsp;&nbsp;把光标移到当前行的第一个字符处</dd>
+			<dd><code>$</code>&nbsp;&nbsp;&nbsp;&nbsp;把光标移到当前行的最后一个字符处</dd>
+		</dl>
+		
+		2、修改内容
+		<dl>
+			<dd><code>nx</code>&nbsp;&nbsp;&nbsp;&nbsp;删除由光标位置起始的n个字符(含光标位置，按一个x表示删除光标所在的字符)</dd>
+			<dd><code>ndw</code>&nbsp;&nbsp;&nbsp;&nbsp;删除光标位置起始的n个字符组(dw删除光标所在的单词)</dd>
+			<dd><code>d0</code>&nbsp;&nbsp;&nbsp;&nbsp;将行的开始到光标位置的字符全部删除</dd>
+			<dd><code>d$ 或 D</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标位置起始到行尾的字符全部删除</dd>
+			<dd><code>ndd</code>&nbsp;&nbsp;&nbsp;&nbsp;将光标位置起始的n行(整行)删除(dd表示删除光标所在行)</dd>
+			<dd><code>:start,end</code>&nbsp;&nbsp;&nbsp;&nbsp;删除文件的第start到end行</dd>
+			<dd><code>rc</code>&nbsp;&nbsp;&nbsp;&nbsp;把光符所在字符替换成c</dd>
+			<dd><code>R</code>&nbsp;&nbsp;&nbsp;&nbsp;覆盖本行内容</dd>
+			<dd><code>u</code>&nbsp;&nbsp;&nbsp;&nbsp;恢复上一次的修改</dd>
+			<dd><code>cw</code>&nbsp;&nbsp;&nbsp;&nbsp;改变光标所在单词</dd>
+			<dd><code>C</code>&nbsp;&nbsp;&nbsp;&nbsp;改变一行光标位置以后的部分</dd>
+			<dd><code>cc 或 S</code>&nbsp;&nbsp;&nbsp;&nbsp;修改一整行</dd>
+		</dl>
+		
+		3、修改内容
+		<dl>
+			<dd><code>/pattern</code>&nbsp;&nbsp;&nbsp;&nbsp;向后寻找指定的pattern ,若遇到文件尾，则从头再开始</dd>
+			<dd><code>?pattern</code>&nbsp;&nbsp;&nbsp;&nbsp;向前寻找指定的pattern ,若遇到文件头，则从尾再开始</dd>
+			<dd><code>n</code>&nbsp;&nbsp;&nbsp;&nbsp;在上次指定的方向上，再次执行</dd>
+			<dd><code>N</code>&nbsp;&nbsp;&nbsp;&nbsp;在上次指定的方向的相反方向上，再次执行上次定义的查找</dd>
+			<dd><code>:%s/old/new/g</code>&nbsp;&nbsp;&nbsp;&nbsp;查找所有old并替换为new</dd>
+			<dd><code>:start,ends/old/new</code>&nbsp;&nbsp;&nbsp;&nbsp;替换指定区域</dd>
+		</dl>
+		
+		4、编辑切换
+		<dl>
+			<dd><code>a</code>&nbsp;&nbsp;&nbsp;&nbsp;在光标之后开始输入文本</dd>
+			<dd><code>A</code>&nbsp;&nbsp;&nbsp;&nbsp;在行尾开始输入文本</dd>
+			<dd><code>i</code>&nbsp;&nbsp;&nbsp;&nbsp;在光标之前开始输入文本</dd>
+			<dd><code>I</code>&nbsp;&nbsp;&nbsp;&nbsp;在行首第一个非空白字符前输入文本</dd>
+			<dd><code>o</code>&nbsp;&nbsp;&nbsp;&nbsp;在光标所在行后插入一空行</dd>
+			<dd><code>O</code>&nbsp;&nbsp;&nbsp;&nbsp;在光标所在行前插入一空行</dd>
+		</dl>
+		
+		5、复制及移动文件
+		<dl>
+			<dd><code>yy</code>&nbsp;&nbsp;&nbsp;&nbsp;在光标之后开始输入文本</dd>
+			<dd><code>yw</code>&nbsp;&nbsp;&nbsp;&nbsp;在行尾开始输入文本</dd>
+			<dd><code>p</code>&nbsp;&nbsp;&nbsp;&nbsp;在光标之前开始输入文本</dd>
+			<dd><code>P</code>&nbsp;&nbsp;&nbsp;&nbsp;在行首第一个非空白字符前输入文本</dd>
+			<dd><code>:first,last co dest</code>&nbsp;&nbsp;&nbsp;&nbsp;将 first 到 last 行的数据复制到目标行(dest）下面</dd>
+			<dd><code>:Start,end m dest</code>&nbsp;&nbsp;&nbsp;&nbsp;将start 到 end行的数据移动到目标行（dest)下</dd>
+			<dd><code>:r filename</code>&nbsp;&nbsp;&nbsp;&nbsp;将指定文件的内容读入光标所在行下</dd>
+		</dl>
+		
+		6、其它
+		<dl>
+			<dd><code>vi</code>&nbsp;&nbsp;&nbsp;&nbsp;进入 vi 而不读入任何文件 </dd>
+			<dd><code>vi filename</code>&nbsp;&nbsp;&nbsp;&nbsp;进入 vi 并读入指定名称的文件(新、旧文件均可)</dd>
+			<dd><code>vi +n filename</code>&nbsp;&nbsp;&nbsp;&nbsp;进入 vi 并且由文件的第几行开始</dd>
+			<dd><code>vi + filename</code>&nbsp;&nbsp;&nbsp;&nbsp;进入 vi 并且由文件的最后一行开始</dd>
+			<dd><code>vi filename(s)</code>&nbsp;&nbsp;&nbsp;&nbsp;进入 vi 并且将各指定文件列入名单内，第一个文件先读入</dd>
+			<dd><code>u</code>&nbsp;&nbsp;&nbsp;&nbsp;取消前一指令</dd>
+			<dd><code>Ctrl + l</code>&nbsp;&nbsp;&nbsp;&nbsp;刷新屏幕显示</dd>
+			<dd><code>:set nu</code>&nbsp;&nbsp;&nbsp;&nbsp;显示文件的行号，但不会存文件</dd>
+			<dd><code>:set nonu</code>&nbsp;&nbsp;&nbsp;&nbsp;解除行号显示</dd>
+			<dd><code>e!</code>&nbsp;&nbsp;&nbsp;&nbsp;重新装入当前文件，若当前文件有改动，则丢弃以前的改动</dd>
+			<dd><code>:sh</code>&nbsp;&nbsp;&nbsp;&nbsp;启动 sh ，从 sh 中返回可用 exit 或 ctrl+d </dd>
+			<dd><code>:! command</code>&nbsp;&nbsp;&nbsp;&nbsp;执行命令 command</dd>
+			<dd><code>!!</code>&nbsp;&nbsp;&nbsp;&nbsp;新执行上次的 :! command 子命令</dd>
+		</dl>
+		
+		
+		<hr>
+		<h4>
+			<small>参考：</small>
+		</h4>
+		<a
+			href=""
+			target="_blank">
+			笔记来源于<cite>廖雪峰官方网站 Git 教程...</cite>
+		</a> <br />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
