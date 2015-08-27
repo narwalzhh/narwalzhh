@@ -147,7 +147,7 @@ body {
 	<!-- 编程模块主体 -->
 	<div class="container">
 		<!-- 编程模块第一个水平线条 -->
-		<div class="alert alert-warning" role="alert"><strong>文章持续更新中，敬请期待！</strong></div>
+		<div class="alert alert-warning" role="alert"><strong>文章持续更新中，还请客官您小小的关注下...</strong></div>
 		<hr/>
 		<!-- 编程模块具体实现 -->
 		<div class="row">

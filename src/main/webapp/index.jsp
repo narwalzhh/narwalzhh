@@ -277,12 +277,7 @@ body {
 					<h4 class="modal-title">narwal 的个人网站</h4>
 				</div>
 				<div class="modal-body">
-					<p>小猿是来自北方小镇的一名大学生，为了打发无聊的考研，又是心血来潮便写了这么个简单网站，
-						一方面想记录下在编程道路上遇到的一些困难，另一方面想把自己遇到的好东西与大家分享，
-						也不枉小猿每个月上交的服务器的钱！</p>
-					<p>欢迎大家通过邮件的方式给小猿提出意见，邮件地址在各个模块都已标注，
-					为了安全起见，小猿不接受附件形式的邮件，来信请表明身份，谢谢合作！</p>
-					<p>大家多来逛一逛是对小猿最大的支持！</p>
+					<p>个人网张介绍</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">了解</button>

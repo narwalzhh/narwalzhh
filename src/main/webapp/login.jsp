@@ -31,6 +31,11 @@ body {
 	$(document).ready(function() {
 		
 	});
+	
+	function queryForGrage() {
+		alert($("#cust_student_id").val() + "==" + $("#cust_student_password").val());
+		return false;
+	}
 </script>
 
 </head>
@@ -98,20 +103,20 @@ body {
 									<div class="form-group">
 										<label class="col-sm-2 control-label">学号</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" id=""
-												placeholder="ID" readonly="readonly" >
+											<input type="text" class="form-control" id="cust_student_id"
+												placeholder="ID" >
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">密码</label>
 										<div class="col-sm-10">
 											<input type="password" class="form-control"
-												id="" placeholder="Password" readonly="readonly" >
+												id="cust_student_password" placeholder="Password" >
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-sm-offset-5 col-sm-10">
-											<button type="submit" class="btn btn-default">查询</button>
+											<button type="submit" class="btn btn-default" onclick="return queryForGrage()">查询</button>
 										</div>
 									</div>
 								</form>
