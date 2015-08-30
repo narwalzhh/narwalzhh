@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maven 学习笔记</title>
+
+<link href="../../../refs/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../../../refs/jsutils/jquery-1.7.1.js"></script>
+
+<style type="text/css">
+h1,h2 {
+	text-align: center;
+}
+
+dl {
+	text-indent: 2em;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<!-- blog文章主题 -->
+	<!-- 标题 -->
+	<div class="container">
+		<h1>Maven 学习笔记</h1>
+		<h2>
+			<small>学习环境：Linux Ubuntu 14.04 64位 状态：完成...</small>
+		</h2>
+		<h2>
+			<small>仅有笔记，并没有什么卵用，重在实践！</small>
+		</h2>
+		<hr />
+			1、pom.xml 文件
+		<dl>
+			<dd><code>groupId</code> 一般为所在公司正在开发的项目的名称</dd>
+			<dd><code>artifactId</code> 项目中的模块</dd>
+		</dl>
+		
+			2、文件结构
+<pre>src
+	main
+		java
+	test
+	pom.xml
+target</pre>
+		
+			3、命令
+		<dl>
+			<dd><code>mvn compile</code> ---- 编译</dd>
+			<dd><code>mvn test</code> ---- 测试</dd>
+			<dd><code>mvn clean</code> ---- 清除报告</dd>
+			<dd><code>mvn package</code> ---- 打包</dd>
+			<dd><code>mvn install</code> ---- 安装到 .m2 文件中</dd>
+			<dd><code>mvn archetype:generate</code> ---- 自动搭建环境</dd>
+		</dl>
+		
+			4、修改仓库位置的方法
+		<dl>
+			<dd>找到 maven 的安装目录中的 conf 文件中的 setting.xml 中的 <code>localRespostitory</code> 在下面将自己的仓库目录添加上</dd>
+			<dd>建立自己的仓库目录，并将上面的 setting.xml 文件拷贝进来即可</dd>
+			<dd>将原来的 .m2 中的文件夹拷贝到新建的仓库下</dd>
+		</dl>
+		
+			5、查询远程工厂
+		<dl>
+			<dd>下载的 maven 包 <code>/lib/model-builder.jar/org/apache/maven/ model/pomXXX.xml</code> 下的名为 <code>Central Respository</code> 的 <code>url</code></dd>
+		</dl>	
+		
+			6、eclipse 中建立 maven 项目，首先要更改 maven 的配置，如资源库位置，安装路径等，建立项目时配置的文件放在自建的资源目录 <code>src/main/resources</code> 中，test 的资源文件放在 <code>src/test/resources</code>中
+		<br/><br/>
+		
+			7、junit 中的 <code>scope</code> 属性
+		<dl>
+			<dd><code>compile</code> 编译时将依赖加入，打包时也加入，默认就为 compile</dd>
+			<dd><code>provided</code> 编译和测试时加入， 最后生成 war 包不会加入，<code>servlet-api</code> 中应该用，因为 <code>servlet-api</code> tomcat 服务器已经存在，如果打包会产生冲突</dd>
+			<dd><code>test</code> 测试范围有效，在编译和打包时都不会使用这个依赖，如 junit 包</dd>
+			<dd><code>runtime</code> 在运行的时候依赖，在编译的时候不依赖</dd>
+		</dl>
+					
+			8、依赖
+			<p>依赖的级别相同，先写的依赖的哪一个，最终就依赖哪一个，如：
+<pre>
+A -- 1.2.7
+B -- 1.2.9
+C -- A B 
+C 最终依赖于 1.2.7，先写的 A
+</pre>	
+			依赖的级别不同，哪一个依赖短，就最终依赖与最短的那个依赖，如：
+<pre>
+A -- B --- 1.1.1
+C -- 1.1.2
+D -- A C 
+D 最终依赖于 1.1.2，如果想依赖于 1.1.1 ，则可以在 D 依赖的文件中依赖 C 的部分中，排除依赖
+</pre>
+
+			9、聚合
+		<dl>
+			<dd>将项目模块聚合，就不用一个一个的执行 maven 命令，在聚合的模块中就可以一次执行，此时要建立空项目</dd>
+		</dl>
+		
+			10、继承
+		<dl>
+			<dd>同样是要建空项目，把一些常用的配置等用一个统一的 pom.xml 文件管理，同时也能管理依赖</dd>
+			<dd>一般情况下，可以将聚合和继承统一弄到一起，方便管理</dd>
+		</dl>
+		
+			11、聚合时模块的位置，继承的绝对路径时 pom.xml 文件
+		<br/><br/>
+		
+			12、项目版本
+		<dl>
+			<dd><code>x.x.x</code> 第一个 x 号表示大范围的改动、第二个 x 表示版本中的分支的改动、第三个 x 标志修改了多少次</dd>
+			<dd><code>SNAPSHOT、alpha、beta、Release(RC)、GA(Generally Available)</code></dd>
+		</dl>
+		
+			13、生命周期和插件
+<pre>
+clean --- pre-clean clean post-clean
+compile --- 
+	validate
+	generate-sources
+	process-sources
+	generate-resources
+	process-resources
+	compile
+	----------------------
+	process-classes
+	generate-test-sources
+	process-test-souuces
+	generate-test-resources
+	process-test-resources
+	test-compile
+	process-test-classes
+	test
+	-----------------------
+	prepare-package
+	package
+	-----------------------
+	pre-integration-test
+	integration-test
+	post-integration-test
+	verify
+	install
+	deploy
+site
+</pre>
+		
+			14、将项目源码打包<code>mvn source:jar</code>
+		<br/><br/>
+		
+			15、使用插件依赖可以指定相应的依赖，插件中一般 jdk 版本是必须的 1.6 版本，其他的用到的时候配置
+			
+		<h3>扩展</h3>
+		
+			16、仓库 Nexus(不是谷歌亲儿子呢！)
+		<dl>
+			<dd>提交命令 <code>mvn:deploy</code></dd>
+			<dd><code>hosted</code> 自己开发的版本通过命令提交能够提交到此类型的仓库下面，分为snapshot、release、3rd-party 可以通过自己模块的 version 提交到相应的仓库下</dd>
+			<dd><code>group</code></dd>
+			<dd><code>proxy</code> 中央工厂中下载下来的所有包都是存放在 proxy 的 Central 中</dd>
+		</dl>
+		
+			17、将默认的中央仓库变成 nexus 在 maven 所在的仓库的 setting.xml 文件中
+<pre>
+&lt;profiles&gt;
+	&lt;profile&gt;
+	   &lt;id&gt;nexusRepo&lt;/id&gt;
+	    &lt;repository&gt;
+	        .....
+	   &lt;/repository&gt;
+	&lt;/profile&gt;
+&lt;/profiles&gt;
+#激活 profile
+&lt;activeProfiles&gt;
+    &lt;activeProfile&gt;nexusRepo&lt;/activeProfile&gt;
+&lt;/artiveProfiles&gt;
+</pre>
+	
+			18、配置参与人员的最终访问路径只能是自己的仓库
+<pre>
+&lt;!--工厂的镜像，只要 mirrorOf 中的工厂要访问，就会自动来找镜像，如果镜像的地址无法访问，就不会再去中央工厂，所有的工厂统一用 * 代替，这是推荐的做法--&gt;
+&lt;mirror&gt;
+    &lt;id&gt;nexusMirror&lt;/id&gt;
+    &lt;mirrorOf&gt;nexus,central&lt;/mirrorOf&gt;
+    &lt;name&gt;......&lt;/name&gt;
+    &lt;url&gt;自己服务器的 nexus 的 public 路径&lt;/url&gt;
+&lt;/mirror&gt;
+</pre>
+	
+			19、一定要及时更新索引 public 的索引，引入依赖过程：引入依赖 --- 去 nexus 中找依赖 --- 在本地仓库中找依赖 --- 依赖成功
+		
+			20、发布 deploy，在本地的仓库的 setting.xml 中设置发布的 server 发布到 nexus
+<pre>
+&lt;server&gt;
+    &lt;id&gt;to release&lt;/id&gt;
+    &lt;username&gt;deployment&lt;username&gt;
+    &lt;password&gt;deployment123&lt;/password&gt;
+&lt;/server&gt;
+</pre>
+		
+			21、创建工程
+		<dl>
+			<dd>为自己的项目创建工厂，首先建立 release 的仓库 填写 groupId artifactId 并		将其设置为 allow deploy</dd>
+			<dd>建立一个 snapshot 的工厂</dd>
+			<dd>建立权限，对相应的项目的 release 和 snapshot 建立权限 在 security 的 privilege 中</dd>
+			<dd>再建立角色 roles 最后建立用户，为用户分配和项目相关的角色</dd>
+		</dl>
+		
+		<hr>
+		<h4>
+			<small>参考：</small>
+		</h4>
+		<a
+			href="http://www.icoolxue.com/album/show/45"
+			target="_blank">
+			笔记来源于<cite>爱酷网孔浩 Maven 视频教程...</cite>
+		</a> <br />
+	</div>
+
+	<script src="../../../refs/jsutils/jquery.min.js"></script>
+	<script src="../../../refs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

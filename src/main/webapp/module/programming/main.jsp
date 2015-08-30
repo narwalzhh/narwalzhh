@@ -21,7 +21,7 @@ body {
 	padding-bottom: 50px;
 }
 .about-author {
-	width: 290px;
+	width: 25%;
 }
 .about-author img {
 	height: 150px;
@@ -37,7 +37,7 @@ body {
 }
 .panel .panel-body iframe {
 	/* height: 1700px; */
-	width: 815px; 
+	width: 100%; 
 	border: 0;
 }
 </style>

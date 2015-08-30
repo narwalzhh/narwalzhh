@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
  %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -21,10 +22,6 @@ body {
 	padding-top: 70px;
 	/* padding-bottom: 50px; */
 }
-
-
-.fixed-in-bottom {
-}
 </style>
 
 <script type="text/javascript">
@@ -33,8 +30,42 @@ body {
 	});
 	
 	function queryForGrage() {
-		alert($("#cust_student_id").val() + "==" + $("#cust_student_password").val());
-		return false;
+		var custStudentId = $("#cust_student_id").val();
+		var custStudentPassword = $("#cust_student_password").val();
+		if(custStudentId == "" && custStudentPassword == "") {
+			$("#tips_alert").html("请输入必要信息！");
+			$("#tips_alert").css("display", "block");
+			return false;
+		} else if(custStudentId == "") {
+			$("#tips_alert").html("请输入学号！");
+			$("#tips_alert").css("display", "block");
+			return false;
+		}  else if(custStudentPassword == "") {
+			$("#tips_alert").html("请输入密码！");
+			$("#tips_alert").css("display", "block");
+			return false;
+		} else if(custStudentId.length != 9) {
+			$("#tips_alert").html("请输入9位的学号！");
+			$("#tips_alert").css("display", "block");
+			return false;
+		}
+		
+		$.ajax({
+			cache: false,
+			async: false,
+			type: "POST",
+			//请求后台的保存留言方法
+			url: "queryForGrade.action",
+			data: $("#cust_query_for_grade_form").serialize(),
+			dataType: "html",
+			success: function(data) {
+				alert(data);
+			},
+			error: function(data) {
+				alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
+			}
+		});
+		
 	}
 </script>
 
@@ -99,21 +130,22 @@ body {
 						<div id="collapseOne" class="panel-collapse collapse in"
 							role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
-								<form class="form-horizontal">
+								<form class="form-horizontal" id="cust_query_for_grade_form">
 									<div class="form-group">
 										<label class="col-sm-2 control-label">学号</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="cust_student_id"
-												placeholder="ID" >
+												name="custStuId" placeholder="ID" >
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">密码</label>
 										<div class="col-sm-10">
 											<input type="password" class="form-control"
-												id="cust_student_password" placeholder="Password" >
+												id="cust_student_password" name="custStuPwd" placeholder="Password" >
 										</div>
 									</div>
+									<div class="alert alert-danger" role="alert" id="tips_alert" style="display: none;">...</div>
 									<div class="form-group">
 										<div class="col-sm-offset-5 col-sm-10">
 											<button type="submit" class="btn btn-default" onclick="return queryForGrage()">查询</button>
@@ -130,7 +162,7 @@ body {
 			<div class="col-md-3"></div>
 		</div>
 	</div>
-	
+		
 	<div class="navbar navbar-fixed-bottom ">
 		<div class="container">
 			<!-- 第二条水平分割线 -->

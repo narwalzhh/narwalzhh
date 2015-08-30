@@ -19,10 +19,6 @@ body {
 	padding-top: 70px;
 	padding-bottom: 50px;
 }
-.about-author img {
-	height: 150px;
-	width: 150px;
-}
 </style>
 
 <script type="text/javascript">

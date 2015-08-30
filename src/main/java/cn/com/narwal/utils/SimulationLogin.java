@@ -17,14 +17,14 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
-import org.eclipse.jdt.internal.compiler.flow.FinallyFlowContext;
 
 public class SimulationLogin {
 
 	private static CloseableHttpClient chc = HttpClients.createDefault();
 	protected static Logger log = Logger.getLogger(SimulationLogin.class);
 	
-	public static int getStudentCookies(String custStudentId, String custStudentPassword) {
+	//查询成绩表的过程中不需要此方法
+	public int getStudentCookies(String custStudentId, String custStudentPassword) {
 		
 		log.info("-------------get cookie for student---------------");
 		//http://jwgl.cust.edu.cn/PreLogin.aspx
@@ -77,10 +77,10 @@ public class SimulationLogin {
 		return htmlCode;
 	}
 	
-	public static int getLoginHtml() {
+	public int getLoginHtml(String custStudentId, String custStudentPassword) {
 		log.info("---------get login html--------");
 		
-		String loginUrl = "http://210.47.0.14:80/Login.aspx?username=120522130&password=itachi4318&role=student";
+		String loginUrl = "http://210.47.0.14:80/Login.aspx?username="+ custStudentId +"&password="+ custStudentPassword +"&role=student";
 		int loginCode = 0;
 		
 		HttpGet httpGet = new HttpGet(loginUrl);
@@ -95,10 +95,7 @@ public class SimulationLogin {
 				
 				HttpEntity httpEntity = chr.getEntity();
 				log.info("------Reponse line--------" +  chr.getStatusLine());
-				log.info("-----cookie-----" + chr.getFirstHeader("Set-Cookie").getValue());
 				loginCode = chr.getStatusLine().getStatusCode();
-				String loginHtml = EntityUtils.toString(httpEntity);
-				log.info("------------" + loginHtml + "-------------");
 				EntityUtils.consume(httpEntity);
 				
 			} catch(Exception e) {
@@ -116,8 +113,8 @@ public class SimulationLogin {
 		
 	}
 	
-	public static String getResultHtml() {
-		log.info("---------get result html--------");
+	public String getResultHtml() {
+		log.info("---------get result grade html--------");
 		
 		String resultUrl = "http://210.47.0.14:80/cjcx/StudentGrade.aspx";
 		String htmlText = "";
@@ -152,25 +149,23 @@ public class SimulationLogin {
 		
 	}
 	
-	public static void main(String[] args) {
-		int htmlCode = getStudentCookies("120522130", "itachi4318");
+	/*public static void main(String[] args) {
+		SimulationLogin sl = new SimulationLogin();
+		int htmlCode = sl.getStudentCookies("120522130", "itachi4318");
 		if(htmlCode == 302) {
 			log.info("-------pre登录成功-------");
-			int loginCode = getLoginHtml();
-			if(loginCode == 302) {
-				log.info("-------登录成功-------");
-			} else if(loginCode == 200) {
-				log.info("-------登录错误-------");
-			} else {
-				log.info("--------------" + loginCode);
-			}
-			//String gradeTable = getResultHtml();
-			//log.info("----------" + gradeTable + "-----------");
+			sl.getLoginHtml("120522130", "itachi4318");
+			String gradeTable = sl.getResultHtml();
+			log.info("----------" + gradeTable + "-----------");
 		} else if(htmlCode == 200) {
 			log.info("-------pre登录错误-------");
 		} else {
 			log.info("--------------" + htmlCode);
 		}
-	}
+		SimulationLogin sl = new SimulationLogin();
+		sl.getLoginHtml("120522130", "itachi4318");
+		String gradeTable = sl.getResultHtml();
+		log.info("----------" + gradeTable + "-----------");
+	}*/
 	
 }
