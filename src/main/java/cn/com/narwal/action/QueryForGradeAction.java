@@ -58,20 +58,33 @@ public class QueryForGradeAction extends ActionSupport {
 		SimulationLogin sl = new SimulationLogin();
 		msg = new HashMap<String, Object>();
 		
+		
 		log.info("----query for grade-----" + custStuId );
 		
 		int statusCode = sl.getLoginHtml(custStuId, custStuPwd);
 		if(statusCode == 200) {
 			msg.put("flag", "success");
 			String resultHtml = sl.getResultHtml();
-			msg.put("result", resultHtml);
-			log.info("-------query for grade-------" + resultHtml.substring(0, 500));
+			resultHtml = resultHtml.substring(resultHtml.indexOf("<form"), resultHtml.indexOf("</form>") + 7);
+			//给学生各科目成绩统计表这个标题设置样式
+			int index = resultHtml.indexOf("pageDiv");
+			StringBuilder strBuilder = new StringBuilder(resultHtml);
+			strBuilder.insert(index + 8, " align=\"center\"");
+			strBuilder.toString();
+			//设置第一个border为1
+			int indexBorder = strBuilder.indexOf("border=\"0\"");
+			strBuilder.setCharAt(indexBorder + 8, '1');
+			String str = strBuilder.toString();
+			StringBuilder stringBuilder = new StringBuilder(str);
+			stringBuilder.replace(str.lastIndexOf("<a"), str.lastIndexOf("</a>") + 4,  "");
+			String modifyHtml = stringBuilder.toString();
+			msg.put("result", modifyHtml);
+			log.info("-------query for grade-------" + modifyHtml.substring(0, 600));
 		} else {
-			
+			msg.put("flag", "error");
+			msg.put("errormsg", "程序异常！");
 		}
-		
 		return "json";
-	
 	}
-
+		
 }

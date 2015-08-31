@@ -20,8 +20,8 @@ import org.apache.log4j.Logger;
 
 public class SimulationLogin {
 
-	private static CloseableHttpClient chc = HttpClients.createDefault();
-	protected static Logger log = Logger.getLogger(SimulationLogin.class);
+	private CloseableHttpClient chc = HttpClients.createDefault();
+	protected Logger log = Logger.getLogger(SimulationLogin.class);
 	
 	//查询成绩表的过程中不需要此方法
 	public int getStudentCookies(String custStudentId, String custStudentPassword) {
@@ -99,7 +99,7 @@ public class SimulationLogin {
 				EntityUtils.consume(httpEntity);
 				
 			} catch(Exception e) {
-				
+				e.printStackTrace();
 			} finally {
 				chr.close();
 			}
@@ -135,7 +135,7 @@ public class SimulationLogin {
 				}
 				
 			} catch(Exception e) {
-				
+				e.printStackTrace();
 			} finally {
 				chr.close();
 			}
@@ -165,7 +165,19 @@ public class SimulationLogin {
 		SimulationLogin sl = new SimulationLogin();
 		sl.getLoginHtml("120522130", "itachi4318");
 		String gradeTable = sl.getResultHtml();
-		log.info("----------" + gradeTable + "-----------");
+		gradeTable = gradeTable.substring(gradeTable.indexOf("<form"), gradeTable.indexOf("</form>") + 7);
+		int index = gradeTable.indexOf("pageDiv");
+		StringBuilder strBuilder = new StringBuilder(gradeTable);
+		strBuilder.insert(index + 8, " align=\"center\"");
+		strBuilder.toString();
+		int indexBorder = strBuilder.indexOf("border=\"0\"");
+		log.info("--------" + indexBorder);
+		strBuilder.setCharAt(indexBorder + 8, '1');
+		String str = strBuilder.toString();
+		str.lastIndexOf("<a");
+		str.lastIndexOf("</a>");
+		strBuilder.replace(str.lastIndexOf("<a"), str.lastIndexOf("</a>") + 4,  "");
+		log.info("-----------------query for grade-------" + strBuilder + "-----------");
 	}*/
 	
 }

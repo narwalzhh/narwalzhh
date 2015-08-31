@@ -62,21 +62,21 @@ body {
 		//判断两个输入框是否为空
 		if(nickname == "" && content == "") {
 			alert("Tips:！@（客官您至少写点什么吧！）@！");
-			return;
+			return false;
 		}
 		if(nickname == "" && content != "") {
 			alert("Tips:！@（请问客官尊姓大名！）@！");
-			return;
+			return false;
 		}
 		if(nickname != "" && content == "") {
-			$.messager.alert("Tips:！@（客官您就没有什么要说的吗？）@！");
-			return;
+			alert("Tips:！@（客官您就没有什么要说的吗？）@！");
+			return false;
 		}
 		//判断输入的名字是否复合要求
 		if(/^[\u4e00-\u9fa5]+$/.test(nickname)){
 			if(nickname.length > 6) {
-				alert("Tips:！@（请最多输入6个汉字！）@!");
-				return;
+				alert("Tips:！@（昵称请最多输入6个汉字！）@!");
+				return false;
 			}
 		}
 		
@@ -90,6 +90,7 @@ body {
 			dataType: "json",
 			success: function(data) {
 				alert("Tips:！@（留言成功，客官：" + data.savedNote.nickname + "）@!");
+				window.location.reload();
 			},
 			error: function(data) {
 				alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
@@ -129,7 +130,7 @@ body {
 					<input type="text" class="form-control make-longer"
 						id="content" name="messagewallObj.content" maxlength="13" placeholder="内容(请输入10到13个汉字)">
 				</div>
-				<button type="submit" class="btn btn-default" onclick="checkAndSubmit()">留言</button>
+				<a class="btn btn-default" href="javascript:void(0);" role="button" onclick="return checkAndSubmit()" >留言</a>
 			</form>
 			<ul class="nav navbar-nav ">
 				<li><a href="#" data-toggle="modal" data-target="#bell">

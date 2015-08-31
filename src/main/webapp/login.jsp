@@ -26,7 +26,6 @@ body {
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
 	});
 	
 	function queryForGrage() {
@@ -55,11 +54,13 @@ body {
 			async: false,
 			type: "POST",
 			//请求后台的保存留言方法
-			url: "queryForGrade.action",
+			url: "queryForGrade.action?timestamp="+new Date().getTime(),
 			data: $("#cust_query_for_grade_form").serialize(),
-			dataType: "html",
+			dataType: "json",
 			success: function(data) {
-				alert(data);
+				var html = data.result;
+				$(".alert-success").css("display", "block");
+				$("#grade_table").html(html);
 			},
 			error: function(data) {
 				alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
@@ -148,7 +149,7 @@ body {
 									<div class="alert alert-danger" role="alert" id="tips_alert" style="display: none;">...</div>
 									<div class="form-group">
 										<div class="col-sm-offset-5 col-sm-10">
-											<button type="submit" class="btn btn-default" onclick="return queryForGrage()">查询</button>
+											<a class="btn btn-default" href="javascript:void(0);" role="button" onclick="return queryForGrage()" >查询</a>
 										</div>
 									</div>
 								</form>
@@ -161,24 +162,20 @@ body {
 			</div>
 			<div class="col-md-3"></div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success alert-dismissible" role="alert" style="display: none;">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<div id="grade_table"></div>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 		
-	<div class="navbar navbar-fixed-bottom ">
-		<div class="container">
-			<!-- 第二条水平分割线 -->
-			<hr />
-			<!-- footer -->
-			<footer style="margin-bottom: 50px;">
-				<p class="pull-right">
-					&middot; <a href="http://www.bootcss.com" target="_blank">Bootstrap中文网</a>
-					&middot; <a href="http://glyphicons.com/" target="_blank">Glyphicons</a>
-					&middot; <a href="https://github.com" target="_blank">Github</a>
-				</p>
-				<p>&copy; 2015 <a href="<%=contextPath %>/index.jsp" >narwal</a></p>
-			</footer>
-		</div>
-	</div>
-
 	<script src="refs/jsutils/jquery.min.js"></script>
 	<script src="refs/bootstrap/js/bootstrap.min.js"></script>
 </body>
