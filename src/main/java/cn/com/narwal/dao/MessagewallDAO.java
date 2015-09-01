@@ -2,9 +2,7 @@ package cn.com.narwal.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -137,7 +135,7 @@ public class MessagewallDAO extends CommonDAOImpl {
 		};
 	}
 	
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		
 		Messagewall mw = new Messagewall();
 		mw.setNickname("narwal");
@@ -148,15 +146,15 @@ public class MessagewallDAO extends CommonDAOImpl {
 		Logger log = Logger.getLogger(MessagewallDAO.class);
 		log.info("--------" + mw.toString() + "------------");
 		
-		/*for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 10; i++) {
 			md.save(mw);
-		}*/
+		}
 		//log.info("------main-------" + md.findOne(20) + "---------------");
 		//log.info("------main-------" + md.listAll() + "---------------");
 		//md.delete(11);
-		/*int[] toBeDeleted = {1, 4, 9};
-		md.multiDelete(toBeDeleted);*/
+		int[] toBeDeleted = {1, 4, 9};
+		md.multiDelete(toBeDeleted);
 		//md.update(mw);
-	}
+	}*/
 
 }

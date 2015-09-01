@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>音乐模块</title>
+<title>小玩意儿</title>
 
 <link rel="shortcut icon" href="../../refs/images/favicon.ico" type="image/x-icon" />
 
@@ -24,26 +24,9 @@ body {
 </style>
 
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		
-		var jsonUrl = "<%=contextPath%>/json/music.json";
-		$.getJSON(jsonUrl, function(data) {
-			var musicContent = $("#musicContent");
-			var toBeAppended = "";
-			musicContent.empty();
-			$.each(data, function(index, element) {
-				toBeAppended += '<tr><td><cite>';
-				toBeAppended += element["musicname"];
-				toBeAppended += '</cite></td><td>';
-				toBeAppended += element["singer"];
-				toBeAppended += '</td></tr>';
-			});
-			musicContent.html(toBeAppended);
-		});
-		
 	});
-	
 </script>
 
 </head>
@@ -61,7 +44,7 @@ body {
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<%=contextPath %>/index.jsp">narwal</a>
+			<a class="navbar-brand" href="<%=contextPath%>/index.jsp">narwal</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -69,14 +52,14 @@ body {
 			<ul class="nav navbar-nav">
 				<li><a href="<%=contextPath%>/module/programming/main.jsp">编程</a></li>
 				<li><a href="<%=contextPath%>/module/messagewall/main.jsp">留言墙</a></li>
-				<li><a href="<%=contextPath%>/module/littlestuff/main.jsp">小玩意</a></li>
-				<li class="dropdown active"><a href="#" class="dropdown-toggle"
+				<li class="active"><a href="<%=contextPath%>/module/messagewall/main.jsp">小玩意</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">其他 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="<%=contextPath%>/module/reading/main.jsp">读书</a></li>
 						<li role="separator" class="divider"></li>
-						<li class="active"><a href="<%=contextPath%>/module/music/main.jsp">音乐</a></li>
+						<li><a href="<%=contextPath%>/module/music/main.jsp">音乐</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="<%=contextPath%>/module/video/main.jsp">视频</a></li>
 						<li role="separator" class="divider"></li>
@@ -93,35 +76,16 @@ body {
 		</div>
 	</div>
 	</nav>
-	<!-- 音乐模块主体 -->
+	<!-- 小玩意儿模块主体 -->
 	<div class="container">
 		<!-- 第一条水平线 -->
 		<hr />
 		<div class="row">
-			<div class="col-md-3 about-author">
-				<blockquote>
-					<p>多少年以后 往事随云走 那纷飞的冰雪容不下那温柔 这一生一世 这时间太少 不够证明融化冰雪的深情</p>
-					<footer>李健<cite title="Source Title">《贝加尔湖畔》</cite></footer>
-				</blockquote>
-			</div>
-			<!-- 读书主体 -->
-			<div class="col-md-9">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<h3>歌单列表</h3>
-						<hr/>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>歌名</th>
-									<th>歌手</th>
-								</tr>
-							</thead>
-							<tbody id="musicContent">
-							</tbody>
-						</table>
-					</div>
-				</div>
+			<!-- 小玩意儿主体 -->
+			<div class="col-md-12">
+				<center>
+				<img src="<%=contextPath %>/refs/images/404pict.jpg" width="600px" height="600px" alt="404pict" class="img-thumbnail">
+				</center>
 			</div>
 		</div>
 		<!-- 第二条水平线 -->
@@ -134,7 +98,7 @@ body {
 			&middot; <a href="https://github.com" target="_blank">Github</a>
 		</p>
 		<p>
-			&copy; 2015 <a href="<%=contextPath %>/index.jsp">narwal</a>
+			&copy; 2015 <a href="<%=contextPath%>/index.jsp">narwal</a>
 		</p>
 		</footer>
 	</div>

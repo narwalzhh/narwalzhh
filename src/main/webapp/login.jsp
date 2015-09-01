@@ -14,6 +14,8 @@ pageEncoding="UTF-8"%>
 <meta name="description" content="narwal的个人网站，好的东西要与人分享">
 <title>登录模块</title>
 
+<link rel="shortcut icon" href="refs/images/favicon.ico" type="image/x-icon" />
+
 <link href="refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="refs/jsutils/jquery-1.7.1.js"></script>
 
@@ -48,7 +50,9 @@ body {
 			$("#tips_alert").css("display", "block");
 			return false;
 		}
-		
+
+		$("#tips_alert").html("成绩单加载情况视网速而定，请稍等...");
+		$("#tips_alert").css("display", "block");
 		$.ajax({
 			cache: false,
 			async: false,
@@ -58,21 +62,24 @@ body {
 			data: $("#cust_query_for_grade_form").serialize(),
 			dataType: "json",
 			success: function(data) {
-				var html = data.result;
-				$(".alert-success").css("display", "block");
-				$("#grade_table").html(html);
+				if(data.flag == "success") {
+					var html = data.result;
+					$(".alert-success").css("display", "block");
+					$("#grade_table").html(html);
+				} else if(data.flag == "error") {
+					alert("Tips:!@(出错了，"+ data.errormsg +")@!");
+				} 
+				$("#tips_alert").css("display", "none");	
 			},
 			error: function(data) {
-				alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
+					alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
 			}
 		});
-		
 	}
 </script>
 
 </head>
 <body>
-
 	<!-- blog的导航条 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -93,7 +100,7 @@ body {
 			<ul class="nav navbar-nav">
 				<li><a href="module/programming/main.jsp">编程</a></li>
 				<li><a href="module/messagewall/main.jsp">留言墙</a></li>
-				<li><a href="#">小玩意</a></li>
+				<li><a href="module/littlestuff/main.jsp">小玩意</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">其他 <span class="caret"></span></a>
@@ -153,7 +160,6 @@ body {
 										</div>
 									</div>
 								</form>
-
 							</div>
 						</div>
 					</div>

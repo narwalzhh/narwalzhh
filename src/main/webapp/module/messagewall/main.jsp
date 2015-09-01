@@ -12,7 +12,9 @@ pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="narwal,narwalzhh,服务器,maven,ubuntu,linux,编程,java,android,开发,火影忍者,server，svn，git">
 <meta name="description" content="narwal的个人网站，好的东西要与人分享">
-<title>narwal个人网站主页</title>
+<title>留言模块</title>
+
+<link rel="shortcut icon" href="../../refs/images/favicon.ico" type="image/x-icon" />
 
 <link href="../../refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="../../refs/jsutils/jquery-1.7.1.js"></script>
@@ -135,7 +137,7 @@ body {
 			<ul class="nav navbar-nav ">
 				<li><a href="#" data-toggle="modal" data-target="#bell">
 					<!-- 铃铛图标 -->
-					<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+					&gt;<span class="glyphicon glyphicon-bell" aria-hidden="true">&lt;</span>
 				</a></li>
 			</ul>
 		</div>
@@ -154,7 +156,10 @@ body {
 					<h4 class="modal-title">留言墙</h4>
 				</div>
 				<div class="modal-body">
-					<p>此处留言墙介绍</p>
+					<p>欢迎小伙伴们前来留言，建议不要透露自己和留言对象的身份信息哦！</p>
+					<p>CSS3代码不是小猿自己写的，所以有诸多限制，还请客官您见谅！</p>
+					<p>留言内容若涉及不良信息(人身攻击、广告、脏话等)，发现后均会删除！</p>
+					<p>最后感谢CSS3代码提供者：<a href="http://www.w3cplus.com" target="_blank">W3C plus</a> 么么嗒！</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">了解</button>

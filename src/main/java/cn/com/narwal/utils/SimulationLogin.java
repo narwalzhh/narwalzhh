@@ -106,11 +106,9 @@ public class SimulationLogin {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-		}
+		} 
 		
 		return loginCode;
-		
-		
 	}
 	
 	public String getResultHtml() {
@@ -142,11 +140,16 @@ public class SimulationLogin {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				chc.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return htmlText;
-		
-		
 	}
 	
 	/*public static void main(String[] args) {

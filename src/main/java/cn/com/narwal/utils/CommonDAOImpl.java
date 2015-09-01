@@ -2,8 +2,6 @@ package cn.com.narwal.utils;
 
 import java.util.List;
 
-import cn.com.narwal.model.Messagewall;
-
 /*
  * 对数据库增闪查改基本操作接口的基本实现
  * 开发过程中可以对方法参数进行修改

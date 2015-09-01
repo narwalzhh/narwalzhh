@@ -11,6 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>读书模块</title>
 
+<link rel="shortcut icon" href="../../refs/images/favicon.ico" type="image/x-icon" />
+
 <link href="../../refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../../refs/jsutils/jquery-1.7.1.js"></script>
 
@@ -75,7 +77,7 @@ body {
 			<ul class="nav navbar-nav">
 				<li><a href="<%=contextPath%>/module/programming/main.jsp">编程</a></li>
 				<li><a href="<%=contextPath%>/module/messagewall/main.jsp">留言墙</a></li>
-				<li><a href="#">小玩意</a></li>
+				<li><a href="<%=contextPath%>/module/littlestuff/main.jsp">小玩意</a></li>
 				<li class="dropdown active"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">其他 <span class="caret"></span></a>

@@ -63,23 +63,30 @@ public class QueryForGradeAction extends ActionSupport {
 		
 		int statusCode = sl.getLoginHtml(custStuId, custStuPwd);
 		if(statusCode == 200) {
-			msg.put("flag", "success");
-			String resultHtml = sl.getResultHtml();
-			resultHtml = resultHtml.substring(resultHtml.indexOf("<form"), resultHtml.indexOf("</form>") + 7);
-			//给学生各科目成绩统计表这个标题设置样式
-			int index = resultHtml.indexOf("pageDiv");
-			StringBuilder strBuilder = new StringBuilder(resultHtml);
-			strBuilder.insert(index + 8, " align=\"center\"");
-			strBuilder.toString();
-			//设置第一个border为1
-			int indexBorder = strBuilder.indexOf("border=\"0\"");
-			strBuilder.setCharAt(indexBorder + 8, '1');
-			String str = strBuilder.toString();
-			StringBuilder stringBuilder = new StringBuilder(str);
-			stringBuilder.replace(str.lastIndexOf("<a"), str.lastIndexOf("</a>") + 4,  "");
-			String modifyHtml = stringBuilder.toString();
-			msg.put("result", modifyHtml);
-			log.info("-------query for grade-------" + modifyHtml.substring(0, 600));
+			try {
+				msg.put("flag", "success");
+				String resultHtml = sl.getResultHtml();
+				resultHtml = resultHtml.substring(resultHtml.indexOf("<form"), resultHtml.indexOf("</form>") + 7);
+				//给学生各科目成绩统计表这个标题设置样式
+				int index = resultHtml.indexOf("pageDiv");
+				StringBuilder strBuilder = new StringBuilder(resultHtml);
+				strBuilder.insert(index + 8, " align=\"center\"");
+				strBuilder.toString();
+				//设置第一个border为1
+				int indexBorder = strBuilder.indexOf("border=\"0\"");
+				strBuilder.setCharAt(indexBorder + 8, '1');
+				String str = strBuilder.toString();
+				StringBuilder stringBuilder = new StringBuilder(str);
+				stringBuilder.replace(str.lastIndexOf("<a"), str.lastIndexOf("</a>") + 4,  "");
+				String modifyHtml = stringBuilder.toString();
+				msg.put("result", modifyHtml);
+				log.info("-------query for grade-------" + modifyHtml.substring(0, 600));
+			} catch(IndexOutOfBoundsException e) {
+				//e.printStackTrace();
+				msg.put("flag", "error");
+				msg.put("errormsg", "帐号或密码输入错误！");
+			}
+			
 		} else {
 			msg.put("flag", "error");
 			msg.put("errormsg", "程序异常！");

@@ -9,9 +9,11 @@ pageEncoding="UTF-8"%>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="narwal,narwalzhh,服务器,maven,ubuntu,linux,编程,java,android,开发,火影忍者,server，svn，git">
-<meta name="description" content="narwal的个人网站，好的东西要与人分享">
+<meta name="keywords" content="narwal,narwalzhh,留言墙,长春理工大学一键成绩查询,服务器,maven,ubuntu,linux,编程,java,android,开发,火影忍者,server，svn，git">
+<meta name="description" content="narwal的个人网站，好东西要与人分享">
 <title>narwal个人网站主页</title>
+
+<link rel="shortcut icon" href="refs/images/favicon.ico" type="image/x-icon" /> 
 
 <link href="refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="refs/jsutils/jquery-1.7.1.js"></script>
@@ -72,12 +74,12 @@ body {
 	    $("#reading").popover({
 	    	trigger: "hover",
 	    	container: "body",
-	    	content: "远离工业社会，回归纯真，在田园生活中感知自然，重塑自我，一字一句，都能让够感受到心灵的纯净，精神的升华。"
+	    	content: ""
 	    });
 	    $("#music").popover({
 	    	trigger: "hover",
 	    	container: "body",
-	    	content: "当内心躁动不已，当终日奔波，身心俱疲时，不如静静地躺下，用心聆听，或许，心就不是那么累了！"
+	    	content: "黄老板这传说中的拉布拉多般治愈嗓音不知俘获了多少少男少女的芳心，这首的治愈能力超强哦，另外，黄老板和你霉可是密友！"
 	    });
 	    $("#video").popover({
 	    	trigger: "hover",
@@ -115,7 +117,7 @@ body {
 			<ul class="nav navbar-nav">
 				<li><a href="module/programming/main.jsp">编程</a></li>
 				<li><a href="module/messagewall/main.jsp">留言墙</a></li>
-				<li><a href="#">小玩意</a></li>
+				<li><a href="module/littlestuff/main.jsp">小玩意</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">其他 <span class="caret"></span></a>
@@ -143,7 +145,7 @@ body {
 	<!-- blog主页主体 -->
 	<div class="container">
 		<!-- 第一条水平分割线 -->
-		<div class="alert alert-warning" role="alert"><strong>网站持续优化中，建议使用谷歌浏览器浏览，blog与其他模块继续更新中，敬请期待！</strong></div>
+		<div class="alert alert-warning" role="alert"><strong>留言墙来了，戳<a href="module/messagewall/main.jsp">这里</a>进入，谷歌浏览器展示效果更佳哦！</strong></div>
 		<hr/>
 		<div class="row">
 			<div class="col-md-9">
@@ -210,8 +212,8 @@ body {
 					width="140" height="140">
 				<h2><small>读书</small></h2>
 				<p><a id="reading">
-					<cite>《瓦尔登湖》</cite>
-					远离工业社会，回归纯真，在田园生活中感知自然...
+					<cite></cite>
+					
 					</a>
 				</p>
 				<p>
@@ -223,7 +225,7 @@ body {
 					alt="Generic placeholder image" width="140" height="140">
 				<h2><small>音乐</small></h2>
 				<p>
-					<a id="music"><cite>尘缘</cite> 当内心躁动不已，当终日奔波，身心俱疲时，不如静静地...</a>
+					<a id="music"><cite>Photograph</cite> 黄老板这传说中的拉布拉多般治愈嗓音不知俘获了多少...</a>
 				</p>
 				<p>
 					<a class="btn btn-default" href="<%=contextPath %>/module/music/main.jsp" role="button">详细&raquo;</a>
@@ -277,7 +279,10 @@ body {
 					<h4 class="modal-title">narwal 的个人网站</h4>
 				</div>
 				<div class="modal-body">
-					<p>个人网张介绍</p>
+					<p>小猿---北方小镇的大学生一枚，闲来无事，又是心血来潮便写了这个小网站。
+						想记录下在学习道路上遇到的一些困难，又想把一些有趣的好东西与大家分享！</p>
+					<p>欢迎大家通过邮件的方式给小猿提出意见，邮件地址在编程模块已经标注(注：不接受附件形式的邮件，来信请表明身份，谢谢合作！)</p>
+					<P>欢迎大家常来骚扰！！！</P>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">了解</button>

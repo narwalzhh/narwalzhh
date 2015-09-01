@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class JdbcUtils {
 	
+	//todo: 需要将jdbcTemplate改为静态的
 	private JdbcTemplate jdbcTemplate;
 	protected Logger log = Logger.getLogger(JdbcUtils.class);
 
