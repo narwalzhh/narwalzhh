@@ -74,7 +74,7 @@ body {
 	    $("#reading").popover({
 	    	trigger: "hover",
 	    	container: "body",
-	    	content: ""
+	    	content: "远离工业社会，回归纯真，在田园生活中感知自然，重塑自我，一字一句，都能让够感受到心灵的纯净，精神的升华！"
 	    });
 	    $("#music").popover({
 	    	trigger: "hover",
@@ -212,8 +212,8 @@ body {
 					width="140" height="140">
 				<h2><small>读书</small></h2>
 				<p><a id="reading">
-					<cite></cite>
-					
+					<cite>《瓦尔登湖》</cite>
+					远离工业社会，回归纯真，在田园生活中感知自然...
 					</a>
 				</p>
 				<p>

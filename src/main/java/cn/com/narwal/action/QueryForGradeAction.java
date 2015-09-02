@@ -80,7 +80,7 @@ public class QueryForGradeAction extends ActionSupport {
 				stringBuilder.replace(str.lastIndexOf("<a"), str.lastIndexOf("</a>") + 4,  "");
 				String modifyHtml = stringBuilder.toString();
 				msg.put("result", modifyHtml);
-				log.info("-------query for grade-------" + modifyHtml.substring(0, 600));
+				log.info("-------query for grade-------" + modifyHtml.substring(300, 500));
 			} catch(IndexOutOfBoundsException e) {
 				//e.printStackTrace();
 				msg.put("flag", "error");

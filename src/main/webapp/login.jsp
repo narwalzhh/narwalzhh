@@ -31,6 +31,7 @@ body {
 	});
 	
 	function queryForGrage() {
+		
 		var custStudentId = $("#cust_student_id").val();
 		var custStudentPassword = $("#cust_student_password").val();
 		if(custStudentId == "" && custStudentPassword == "") {
@@ -49,10 +50,10 @@ body {
 			$("#tips_alert").html("请输入9位的学号！");
 			$("#tips_alert").css("display", "block");
 			return false;
-		}
-
-		$("#tips_alert").html("成绩单加载情况视网速而定，请稍等...");
-		$("#tips_alert").css("display", "block");
+		} 
+		
+		loadTips();
+		
 		$.ajax({
 			cache: false,
 			async: false,
@@ -75,6 +76,11 @@ body {
 					alert("Tips:！@（出错了，不好意思客官，稍后再来吧！）@!");
 			}
 		});
+	}
+	
+	function loadTips() {
+		$("#tips_alert").html("成绩单加载情况视网速而定，请稍等...");
+		$("#tips_alert").css("display", "block");
 	}
 </script>
 
@@ -153,7 +159,7 @@ body {
 												id="cust_student_password" name="custStuPwd" placeholder="Password" >
 										</div>
 									</div>
-									<div class="alert alert-danger" role="alert" id="tips_alert" style="display: none;">...</div>
+									<div class="alert alert-danger" role="alert" id="tips_alert" style="display: none;"></div>
 									<div class="form-group">
 										<div class="col-sm-offset-5 col-sm-10">
 											<a class="btn btn-default" href="javascript:void(0);" role="button" onclick="return queryForGrage()" >查询</a>

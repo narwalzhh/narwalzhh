@@ -1,9 +1,10 @@
 package cn.com.narwal.utils;
 
 import org.apache.log4j.Logger;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /*
  * 使用JdbcTemplate对数据库进行操作
@@ -28,8 +29,12 @@ public class JdbcUtils {
 			jdbcTemplate = jt;*/
 			
 			//这种方法没有差不多和文档提供的方法相同
-			ApplicationContext ac = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/bean.xml");
-			JdbcTemplate jt = (JdbcTemplate)ac.getBean("jdbcTemplate");
+			//ApplicationContext ac = new FileSystemXmlApplicationContext("webapp/WEB-INF/bean.xml");
+			WebApplicationContext wac = WebApplicationContextUtils
+					.getWebApplicationContext(ServletActionContext
+							.getServletContext());
+			log.info("------wac--------" + wac);
+			JdbcTemplate jt = (JdbcTemplate)wac.getBean("jdbcTemplate");
 			jdbcTemplate = jt;
 		}
 		return jdbcTemplate;
