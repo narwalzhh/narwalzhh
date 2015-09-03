@@ -59,7 +59,7 @@ body {
 			async: false,
 			type: "POST",
 			//请求后台的保存留言方法
-			url: "queryForGrade.action?timestamp="+new Date().getTime(),
+			url: "queryForGrade.action",
 			data: $("#cust_query_for_grade_form").serialize(),
 			dataType: "json",
 			success: function(data) {

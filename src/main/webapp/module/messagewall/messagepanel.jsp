@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>小玩意儿</title>
+<title>留言板</title>
 
 <link rel="shortcut icon" href="../../refs/images/favicon.ico" type="image/x-icon" />
 
@@ -76,12 +76,12 @@ body {
 		</div>
 	</div>
 	</nav>
-	<!-- 小玩意儿模块主体 -->
+	<!-- 留言板模块主体 -->
 	<div class="container">
 		<!-- 第一条水平线 -->
 		<hr />
 		<div class="row">
-			<!-- 小玩意儿主体 -->
+			<!-- 留言板主体 -->
 			<div class="col-md-12">
 				<center>
 				<img src="<%=contextPath %>/refs/images/404pict.jpg" width="600px" height="600px" alt="404pict" class="img-thumbnail">

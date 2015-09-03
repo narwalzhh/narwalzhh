@@ -33,7 +33,7 @@ public class JdbcUtils {
 			WebApplicationContext wac = WebApplicationContextUtils
 					.getWebApplicationContext(ServletActionContext
 							.getServletContext());
-			log.info("------wac--------" + wac);
+			//log.info("------wac--------" + wac);
 			JdbcTemplate jt = (JdbcTemplate)wac.getBean("jdbcTemplate");
 			jdbcTemplate = jt;
 		}

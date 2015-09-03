@@ -59,8 +59,6 @@ public class QueryForGradeAction extends ActionSupport {
 		msg = new HashMap<String, Object>();
 		
 		
-		log.info("----query for grade-----" + custStuId );
-		
 		int statusCode = sl.getLoginHtml(custStuId, custStuPwd);
 		if(statusCode == 200) {
 			try {
