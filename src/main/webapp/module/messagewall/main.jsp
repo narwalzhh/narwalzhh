@@ -51,7 +51,7 @@ body {
 			if(mainheight < 768) {
 				$(this).height(768);
 			} else {
-				$(this).height(mainheight);
+				$(this).height(mainheight + 100);
 			}
 		});		
 	});

@@ -10,8 +10,8 @@
 
     <package name="default" namespace="/" extends="json-default, struts-default">
 
-        <default-action-ref name="index" />
-
+        <default-action-ref name="error" />
+        
         <global-results>
             <result name="error">error.jsp</result>
         </global-results>
@@ -19,10 +19,15 @@
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
-
+        
+        <action name="error">
+        	<result>/error.jsp</result>
+        </action>
+        
     </package>
 
     <!-- Add packages here -->
 	
-
+	<package name="module" namespace="/module" extends="default"></package>
+	
 </struts>

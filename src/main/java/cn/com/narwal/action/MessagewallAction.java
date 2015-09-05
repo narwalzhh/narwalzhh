@@ -17,7 +17,6 @@ import org.apache.struts2.convention.annotation.Results;
 import cn.com.narwal.dao.MessagewallDAO;
 import cn.com.narwal.model.Messagewall;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 @ParentPackage("json-default")
