@@ -28,6 +28,7 @@
 
     <!-- Add packages here -->
 	
-	<package name="module" namespace="/module" extends="default"></package>
+	<package name="module" namespace="/module" extends="default">
+	</package>
 	
 </struts>

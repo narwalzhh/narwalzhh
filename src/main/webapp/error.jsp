@@ -14,10 +14,10 @@ pageEncoding="UTF-8"%>
 <meta name="description" content="narwal的个人网站，好的东西要与人分享">
 <title>narwal错误页面</title>
 
-<link rel="shortcut icon" href="refs/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="<%=contextPath %>/refs/images/favicon.ico" type="image/x-icon" />
 
-<link href="refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="refs/jsutils/jquery-1.7.1.js"></script>
+<link href="<%=contextPath %>/refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="<%=contextPath %>/refs/jsutils/jquery-1.7.1.js"></script>
 
 <style type="text/css">
 body {
@@ -51,25 +51,25 @@ body {
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="module/programming/main.jsp">编程</a></li>
-				<li><a href="module/messagewall/main.jsp">留言墙</a></li>
-				<li><a href="module/littlestuff/main.jsp">小玩意</a></li>
+				<li><a href="<%=contextPath %>/module/programming/main.jsp">编程</a></li>
+				<li><a href="<%=contextPath %>/module/messagewall/main.jsp">留言墙</a></li>
+				<li><a href="<%=contextPath %>/module/littlestuff/main.jsp">小玩意</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">其他 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="module/reading/main.jsp">读书</a></li>
+						<li><a href="<%=contextPath %>/module/reading/main.jsp">读书</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="module/music/main.jsp">音乐</a></li>
+						<li><a href="<%=contextPath %>/module/music/main.jsp">音乐</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="module/video/main.jsp">视频</a></li>
+						<li><a href="<%=contextPath %>/module/video/main.jsp">视频</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="module/comic/main.jsp">动漫</a></li>
+						<li><a href="<%=contextPath %>/module/comic/main.jsp">动漫</a></li>
 					</ul>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.jsp" id="loginBtn">
+				<li><a href="<%=contextPath %>/login.jsp" id="loginBtn">
 					<span class="glyphicon glyphicon glyphicon-log-in" aria-hidden="true"></span>
 				</a></li>
 			</ul>
@@ -87,27 +87,16 @@ body {
 				<div class="panel panel-danger">
 					<div class="panel-body">
 						<div class="alert alert-danger" role="alert">OPPS：客官您访问的页面不存在，去其他模块转转呗...</div>
-						<center><img src="refs/images/error-opps.gif" alt="error-opps" class="img-thumbnail"></center>
+						<center><img src="<%=contextPath %>/refs/images/error-opps.gif" alt="error-opps" class="img-thumbnail"></center>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3"></div>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="alert alert-success alert-dismissible" role="alert" style="display: none;">
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<div id="grade_table"></div>
-				</div>
-			</div>
-		</div>
 		
 	</div>
 		
-	<script src="refs/jsutils/jquery.min.js"></script>
-	<script src="refs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%=contextPath %>/refs/jsutils/jquery.min.js"></script>
+	<script src="<%=contextPath %>/refs/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
