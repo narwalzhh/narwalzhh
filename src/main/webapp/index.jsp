@@ -18,6 +18,9 @@ pageEncoding="UTF-8"%>
 <link href="refs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="refs/jsutils/jquery-1.7.1.js"></script>
 
+<!-- returnCitySN["cip"]+','+returnCitySN["cname"] -->
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
 <style type="text/css">
 body {
 	padding-top: 70px;
@@ -153,7 +156,10 @@ body {
 	<!-- blog主页主体 -->
 	<div class="container">
 		<!-- 第一条水平分割线 -->
-		<div class="alert alert-warning" role="alert"><strong>留言墙来了，戳<a href="module/messagewall/main.jsp">这里</a>进入，谷歌浏览器展示效果更佳哦！</strong></div>
+		<div class="alert alert-warning" role="alert">
+			<strong>留言墙来了，戳<a href="module/message/main.jsp">这里</a>进入，谷歌浏览器展示效果更佳哦！</strong>
+			<strong>什么?留言墙字数限制太坑，那就来个不太坑的，戳<a href="module/message/messagepanel.jsp">这里</a>进入留言板，赶紧试试吧！</strong>
+		</div>
 		<hr/>
 		<div class="row">
 			<div class="col-md-9">
