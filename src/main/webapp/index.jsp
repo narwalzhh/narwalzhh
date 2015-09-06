@@ -116,7 +116,15 @@ body {
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="module/programming/main.jsp">编程</a></li>
-				<li><a href="module/messagewall/main.jsp">留言墙</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">留言 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="<%=contextPath %>/module/message/main.jsp">留言墙</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="<%=contextPath %>/module/message/messagepanel.jsp">留言板</a></li>
+					</ul>
+				</li>
 				<li><a href="module/littlestuff/main.jsp">小玩意</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"

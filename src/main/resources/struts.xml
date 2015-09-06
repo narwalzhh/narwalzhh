@@ -31,4 +31,53 @@
 	<package name="module" namespace="/module" extends="default">
 	</package>
 	
+	<package name="module/comic" namespace="/module/comic" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/comic/main.jsp</result>
+		</action>
+	</package>
+	
+	<package name="module/littlestuff" namespace="/module/littlestuff" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/littlestuff/main.jsp</result>
+		</action>
+	</package>
+	
+	<package name="module/message" namespace="/module/message" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/message/messagepanel.jsp</result>
+		</action>
+	</package>
+	
+	<package name="module/music" namespace="/module/music" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/music/main.jsp</result>
+		</action>
+	</package>
+	
+	<package name="module/programming" namespace="/module/programming" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/programming/main.jsp</result>
+		</action>	
+	</package>
+	
+	<package name="module/reading" namespace="/module/reading" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/reading/main.jsp</result>
+		</action>
+	</package>
+	
+	<package name="module/video" namespace="/module/video" extends="default">
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>/module/video/main.jsp</result>
+		</action>
+	</package>
+	
 </struts>

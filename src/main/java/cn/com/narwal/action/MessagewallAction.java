@@ -20,7 +20,7 @@ import cn.com.narwal.model.Messagewall;
 import com.opensymphony.xwork2.ActionSupport;
 
 @ParentPackage("json-default")
-@Namespace("/module/messagewall")
+@Namespace("/module/message")
 @Results({  
     @Result(name = "json",type = "json", params = {"root","msg"})  
 }) 
@@ -68,7 +68,7 @@ public class MessagewallAction extends ActionSupport {
 		 
 		msg.put("savedNote", savedNote);
 		
-		log.info("-----action saveNote-----------");
+		log.info("-----action messagewall saveNote-----------");
 		messagewallDao.save(messagewallObj);
 		return "json";	
 	}
