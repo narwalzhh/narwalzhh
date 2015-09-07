@@ -55,7 +55,7 @@ body {
 			toBeAppended += messagelist[i].from;
 			toBeAppended += '</td><td class="warning">';
 			toBeAppended += messagelist[i].say_something;
-			toBeAppended += '</td><td class="danger">';
+			toBeAppended += '</td><td class="danger">@ ';
 			toBeAppended += messagelist[i].to;
 			toBeAppended += '</td><td class="info">';
 			toBeAppended += timeformat(messagelist[i].time);

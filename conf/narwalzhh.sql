@@ -22,8 +22,10 @@ create table n_messagepanel (
 /*backend sql 信息*/
 drop table if exists n_backend_user;
 create table n_backend_user (
-	n_id int auto_increment comment "后台可登陆用户id",
-	n_username varchar(16) not null comment "后台可登陆用户用户名",
-	n_password varchar(32) not null comment "后台可登陆用户密码",
+	n_id int auto_increment comment "后台可登录用户id",
+	n_username varchar(32) not null comment "后台可登录用户用户名",
+	n_password varchar(32) not null comment "后台可登录用户密码",
+	n_role varchar(32) not null comment "后台可登录用户的角色",
+	n_permission varchar(32) not null comment "后台可登录用户具有的权限",
 	primary key (n_id)
 );
